@@ -1,6 +1,6 @@
 ---
 name: firecrawl-workflows
-description: Run outcome-focused Firecrawl workflows that produce deliverables such as research reports, SEO audits, QA reports, lead lists, knowledge bases, website design systems, and other structured web-data artifacts. Use when the user wants Firecrawl to complete a business, marketing, product, or creative workflow rather than merely scrape a page or integrate API calls into code.
+description: Run outcome-focused Firecrawl workflows that produce deliverables such as research reports, literature reviews over published papers, SEO audits, QA reports, lead lists, knowledge bases, website design systems, and other structured web-data artifacts. Use when the user wants Firecrawl to complete a business, marketing, product, or creative workflow rather than merely scrape a page or integrate API calls into code.
 license: ISC
 metadata:
   author: firecrawl
@@ -22,7 +22,8 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 ## Choose The Workflow
 
 - Use [firecrawl-website-design-clone](../firecrawl-website-design-clone/SKILL.md) to extract a website's colors, fonts, spacing, components, and layout patterns into an agent-ready `DESIGN.md`.
-- Use [firecrawl-deep-research](../firecrawl-deep-research/SKILL.md) for sourced multi-source research reports.
+- Use [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md) for literature reviews and paper-backed synthesis, including biomedical, clinical, drug, gene, disease, epidemiology, and public-health topics. It queries Firecrawl's paper index — PubMed, bioRxiv, medRxiv, and arXiv abstracts with full text reachable per paper — rather than searching websites.
+- Use [firecrawl-deep-research](../firecrawl-deep-research/SKILL.md) for sourced multi-source research reports built from **web** evidence: market, policy, technical, or industry topics. Not for literature reviews — when the evidence base is published papers, use `firecrawl-research-papers` above.
 - Use [firecrawl-seo-audit](../firecrawl-seo-audit/SKILL.md) for site structure, on-page SEO, keyword, and SERP audits.
 - Use [firecrawl-lead-research](../firecrawl-lead-research/SKILL.md) for pre-meeting company/person intelligence briefs.
 - Use [firecrawl-qa](../firecrawl-qa/SKILL.md) for live-site QA testing and bug reports.
@@ -33,7 +34,6 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 - Use [firecrawl-knowledge-ingest](../firecrawl-knowledge-ingest/SKILL.md) for auth-gated or JS-heavy docs portal ingestion.
 - Use [firecrawl-lead-gen](../firecrawl-lead-gen/SKILL.md) for prospect list generation.
 - Use [firecrawl-market-research](../firecrawl-market-research/SKILL.md) for market, financial, and industry research.
-- Use [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md) for literature reviews from papers, PDFs, and whitepapers.
 - Use [firecrawl-demo-walkthrough](../firecrawl-demo-walkthrough/SKILL.md) for product flow walkthroughs and UX teardown reports.
 - Use [firecrawl-shop](../firecrawl-shop/SKILL.md) for product research and shopping recommendations.
 

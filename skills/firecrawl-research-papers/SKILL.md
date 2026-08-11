@@ -1,6 +1,6 @@
 ---
 name: firecrawl-research-papers
-description: Find and synthesize research papers, whitepapers, PDFs, technical reports, and academic sources with Firecrawl Research, using semantic paper search, related-paper expansion, and in-body verification. Use when the user wants a literature review, paper summary, research landscape, or sourced synthesis from PDFs and scholarly/industry publications.
+description: Find and synthesize research papers, whitepapers, PDFs, technical reports, and academic sources with Firecrawl Research, using semantic paper search, related-paper expansion, and in-body verification over Firecrawl's paper index — largely biomedical and life-science literature from PubMed, bioRxiv, and medRxiv, plus arXiv preprints in CS, physics, and math. Use when the user wants a literature review, systematic review, survey of studies, paper summary, research landscape, or sourced synthesis from scholarly and industry publications, including clinical, drug, gene, disease, epidemiology, and public-health topics. Prefer this over a general web-research workflow whenever the evidence base is published papers rather than web pages.
 license: ISC
 metadata:
   author: firecrawl
@@ -30,6 +30,13 @@ surface as the primary path for paper discovery and verification. Fall back to
 general Firecrawl search and scrape for whitepapers, technical reports,
 research blogs, leaderboards, or facts outside the paper corpus.
 
+What the paper index holds: paper abstracts, with full text reachable per
+paper. Its largest share is biomedical and life-science literature — PubMed
+journal articles plus bioRxiv and medRxiv preprints — so clinical, drug, gene,
+disease, epidemiology, and public-health questions are in scope. arXiv
+preprints cover computer science, physics, and mathematics. Coverage outside
+those sources is thinner, and the web tools below are the fallback there.
+
 Core tools:
 
 - MCP: `firecrawl_research_search_papers(query, k?)`
@@ -55,6 +62,15 @@ Core tools:
   Use for web-only context: benchmark leaderboards, rankings, reports,
   whitepapers, research blogs, and source pages outside the paper index.
 
+Not the paper index, despite the name: passing `categories: ["research"]` to
+`firecrawl_search` (CLI `firecrawl search <query> --categories research`)
+filters an ordinary web search down to a short list of research-related
+websites. It returns web pages rather than paper records, and offers none of
+the related-paper expansion, canonical metadata, or in-body reading above. It
+does not reach PubMed, bioRxiv, medRxiv, or the arXiv abstracts. Use it only
+when a web search is what you want and those sites should be weighted in the
+same call; use the `firecrawl_research_*` tools for paper work.
+
 Match the approach to the query:
 
 - Single named paper: run one paper search, then inspect or read the paper if
@@ -74,7 +90,10 @@ Match the approach to the query:
 
 Target source types:
 
-- academic papers from arXiv, university sites, ACM/IEEE pages where accessible
+- biomedical and life-science literature from PubMed, with bioRxiv and medRxiv
+  preprints for work that has not appeared in a journal yet
+- arXiv preprints in computer science, physics, and mathematics
+- academic papers from university sites and ACM/IEEE pages where accessible
 - industry reports and whitepapers
 - company research blogs
 - technical articles and conference summaries
@@ -93,9 +112,15 @@ Principles:
 If appropriate, use sub-agents or equivalent parallel task runners:
 
 - Academic Papers researcher
+- Biomedical and Life Sciences researcher, for PubMed journal articles and
+  bioRxiv/medRxiv preprints on a clinical, drug, gene, disease, epidemiology,
+  or public-health topic
 - Industry Reports researcher
 - Technical Articles researcher
 - Synthesis and citation reviewer
+
+Split by source or sub-topic, not by tool. Give each researcher the same paper
+tools and let the topic decide which part of the corpus answers.
 
 ## Final Deliverable
 

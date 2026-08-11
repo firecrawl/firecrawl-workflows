@@ -27,7 +27,7 @@ npx skills add firecrawl/firecrawl-workflows
 | Skill | Outcome |
 | --- | --- |
 | [`firecrawl-workflows`](./skills/firecrawl-workflows) | Umbrella skill for choosing and running Firecrawl workflow skills |
-| [`firecrawl-deep-research`](./skills/firecrawl-deep-research) | Multi-source sourced research reports |
+| [`firecrawl-deep-research`](./skills/firecrawl-deep-research) | Multi-source sourced research reports from web evidence (not literature reviews) |
 | [`firecrawl-seo-audit`](./skills/firecrawl-seo-audit) | Site maps, on-page SEO checks, SERP comparison, and prioritized recommendations |
 | [`firecrawl-lead-research`](./skills/firecrawl-lead-research) | Pre-meeting company/person intelligence briefs |
 | [`firecrawl-qa`](./skills/firecrawl-qa) | Live-site QA reports with issues and reproduction steps |
@@ -38,7 +38,7 @@ npx skills add firecrawl/firecrawl-workflows
 | [`firecrawl-knowledge-ingest`](./skills/firecrawl-knowledge-ingest) | Auth-gated or JS-heavy docs portal ingestion |
 | [`firecrawl-lead-gen`](./skills/firecrawl-lead-gen) | Prospect list generation from databases and directories |
 | [`firecrawl-market-research`](./skills/firecrawl-market-research) | Market, financial, earnings, and industry research |
-| [`firecrawl-research-papers`](./skills/firecrawl-research-papers) | Literature reviews from papers, PDFs, and whitepapers |
+| [`firecrawl-research-papers`](./skills/firecrawl-research-papers) | Literature reviews from the paper index — biomedical and life-science work (PubMed, bioRxiv, medRxiv) plus arXiv preprints — and from PDFs and whitepapers |
 | [`firecrawl-demo-walkthrough`](./skills/firecrawl-demo-walkthrough) | Product flow walkthroughs and UX teardown reports |
 | [`firecrawl-shop`](./skills/firecrawl-shop) | Product research and shopping recommendations |
 | [`firecrawl-website-design-clone`](./skills/firecrawl-website-design-clone) | Extract a website's design system into an agent-ready `DESIGN.md` |

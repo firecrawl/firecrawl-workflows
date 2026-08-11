@@ -40,7 +40,9 @@ Use this repo when an agent should produce a real deliverable with Firecrawl, su
 - recurring market scans
 - SEO audits
 - QA reports
-- research briefs
+- research briefs from web evidence
+- literature reviews over published papers, including biomedical, clinical, and
+  other life-science topics, through the paper index rather than web search
 - knowledge bases
 - lead lists
 - research-backed content or planning artifacts
@@ -64,6 +66,7 @@ Those belong to the core CLI skills and build skills.
 - Make workflows automation-friendly by defining required inputs, steps, artifacts, and verification.
 - Flag parallelizable work generically when competitors, URLs, pages, or sources can be processed independently.
 - Use Firecrawl through the CLI or equivalent Firecrawl tool surface available in the host environment.
+- Keep the paper index and web search distinct. Paper work goes through `firecrawl_research_*` (MCP) or `firecrawl research` (CLI); `categories: ["research"]` on Firecrawl search is a website filter and does not reach that index.
 
 ## Repo Shape
 

@@ -10,6 +10,12 @@ description: |
   Do not use for product picks, top-N lists, quick lookups, or routine "find out
   about X" tasks. If the request does not clearly need this kind of report, do
   not use this skill.
+
+  Do not use for a literature review over published papers. This skill collects
+  evidence from the open web. A request for the literature on a biomedical,
+  clinical, life-science, or other scientific topic — papers, studies, trials,
+  preprints — belongs to firecrawl-research-papers, which queries Firecrawl's
+  paper index (PubMed, bioRxiv, medRxiv, arXiv) instead of searching websites.
 license: ISC
 metadata:
   author: firecrawl
@@ -29,6 +35,12 @@ explicitly wants delivered as a formal written report. If the request is a
 product pick, a top-N list, a quick lookup, or anything answerable with a short
 search, stop; do not use this skill, let the request be handled the standard
 way.
+
+This skill gathers its evidence from the open web. If the evidence base is the
+published literature — a literature review, or a biomedical, clinical, or other
+scientific topic where the answer lives in papers — use
+[firecrawl-research-papers](../firecrawl-research-papers/SKILL.md) instead; it
+queries Firecrawl's paper index rather than searching websites.
 
 ## Onboarding Interview
 
@@ -55,6 +67,29 @@ depth to the runtime the user chose during onboarding.
 - Exhaustive (longer): search 10+ queries and scrape 25+ sources, including primary sources, research papers, expert views, and contrarian sources.
 
 Avoid re-scraping URLs already returned with full content from a search-with-scrape result.
+
+### When Published Papers Are The Evidence
+
+Search and scrape reach web pages. They do not query Firecrawl's research paper
+index, which holds paper abstracts with full text reachable per paper — largely
+biomedical and life-science literature from PubMed, bioRxiv, and medRxiv, plus
+arXiv preprints in CS, physics, and math.
+
+Hand off to [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md)
+when the report's evidence base is the published literature — a biomedical,
+clinical, drug, gene, disease, epidemiology, or public-health topic, or any
+request phrased as a literature review, systematic review, or survey of studies.
+That skill uses `firecrawl_research_*` (MCP) / `firecrawl research` (CLI) to
+search abstracts, expand to related papers, and verify claims inside a paper
+body — none of which plain search and scrape can do.
+
+If the report needs both — the literature *and* market, policy, or news context —
+run the paper work through that skill and keep the web collection above for the
+rest, then synthesize here.
+
+Note that passing `categories: ["research"]` to Firecrawl search does not reach
+the paper index either. It filters an ordinary web search down to a short list of
+research-related websites.
 
 ## Parallel Work
 
