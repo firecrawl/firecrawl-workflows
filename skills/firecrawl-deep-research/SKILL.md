@@ -87,9 +87,10 @@ If the report needs both — the literature *and* market, policy, or news contex
 run the paper work through that skill and keep the web collection above for the
 rest, then synthesize here.
 
-Note that passing `categories: ["research"]` to Firecrawl search does not reach
-the paper index either. It filters an ordinary web search down to a short list of
-research-related websites.
+Note that passing `categories: ["research"]` to Firecrawl search does not query
+the paper index either. It filters an ordinary web search to research-affiliated
+websites — the list includes PubMed, bioRxiv, medRxiv, arXiv, and publisher
+sites — and returns their web pages, not the paper records behind them.
 
 ## Parallel Work
 

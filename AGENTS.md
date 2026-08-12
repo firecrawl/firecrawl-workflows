@@ -66,7 +66,7 @@ Those belong to the core CLI skills and build skills.
 - Make workflows automation-friendly by defining required inputs, steps, artifacts, and verification.
 - Flag parallelizable work generically when competitors, URLs, pages, or sources can be processed independently.
 - Use Firecrawl through the CLI or equivalent Firecrawl tool surface available in the host environment.
-- Keep the paper index and web search distinct. Paper work goes through `firecrawl_research_*` (MCP) or `firecrawl research` (CLI); `categories: ["research"]` on Firecrawl search is a website filter and does not reach that index.
+- Keep the paper index and web search distinct. Paper work goes through `firecrawl_research_*` (MCP) or `firecrawl research` (CLI); `categories: ["research"]` on Firecrawl search is a website filter — it points ordinary web search at research-affiliated sites, PubMed, bioRxiv, medRxiv, and arXiv among them, and returns their web pages rather than paper records from that index.
 
 ## Repo Shape
 

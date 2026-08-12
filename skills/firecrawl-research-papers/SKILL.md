@@ -64,12 +64,14 @@ Core tools:
 
 Not the paper index, despite the name: passing `categories: ["research"]` to
 `firecrawl_search` (CLI `firecrawl search <query> --categories research`)
-filters an ordinary web search down to a short list of research-related
-websites. It returns web pages rather than paper records, and offers none of
-the related-paper expansion, canonical metadata, or in-body reading above. It
-does not reach PubMed, bioRxiv, medRxiv, or the arXiv abstracts. Use it only
-when a web search is what you want and those sites should be weighted in the
-same call; use the `firecrawl_research_*` tools for paper work.
+filters an ordinary web search to research-affiliated websites — the list
+includes PubMed, bioRxiv, medRxiv, arXiv, and publisher sites — and returns
+page results from them. It reaches those sites' web pages; what it does not do
+is query their paper records in the index above, so there is no abstract
+search, no related-paper or citation-graph expansion, no canonical paper
+metadata, and no in-body passages. Use it when a web search is what you want
+and those sites should be weighted in the same call; use the
+`firecrawl_research_*` tools for paper work.
 
 Match the approach to the query:
 
