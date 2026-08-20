@@ -1,0 +1,19 @@
+# Configuration for the Repo Lockdown app: https://github.com/apps/repo-lockdown
+# This repo is a read-only mirror of firecrawl/skills (skills/workflows/).
+
+issues:
+  comment: >
+    This repo is a read-only mirror. Workflow skills are authored in
+    [firecrawl/skills](https://github.com/firecrawl/skills) under
+    `skills/workflows/` — please open this issue there instead.
+  close: true
+  lock: true
+
+pulls:
+  comment: >
+    This repo is a read-only mirror synced by CI; direct changes are
+    overwritten on the next sync. Please open this PR against
+    [firecrawl/skills](https://github.com/firecrawl/skills) under
+    `skills/workflows/`.
+  close: true
+  lock: true
