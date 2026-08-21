@@ -1,11 +1,6 @@
-# Firecrawl Workflows (legacy mirror)
+# Firecrawl Workflows
 
-> **This repo is a read-only mirror.** Workflow skills are now authored in the
-> [`firecrawl/skills`](https://github.com/firecrawl/skills) catalog under
-> [`skills/workflows/`](https://github.com/firecrawl/skills/tree/main/skills/workflows).
-> CI syncs them here so existing installs keep working. **PRs and issues → [`firecrawl/skills`](https://github.com/firecrawl/skills).**
-
-Outcome-focused Firecrawl skills for AI coding agents: research reports, SEO audits, QA reports, knowledge bases, lead lists, and agent-ready website design systems.
+**Source of truth for Firecrawl workflow skills** — outcome-focused skills for AI coding agents: research reports, SEO audits, QA reports, knowledge bases, lead lists, and agent-ready website design systems. CI mirrors `skills/` into the [`firecrawl/skills`](https://github.com/firecrawl/skills) catalog, which is the promoted install path.
 
 ## Install
 
@@ -15,7 +10,7 @@ Preferred — the full catalog (includes these workflows):
 npx skills add firecrawl/skills
 ```
 
-This legacy path keeps working and installs the same 16 workflow skills:
+Installing directly from this repo also works and serves the same 16 workflow skills:
 
 ```bash
 npx skills add firecrawl/firecrawl-workflows
@@ -23,7 +18,9 @@ npx skills add firecrawl/firecrawl-workflows
 
 ## Contributing
 
-CLI skills → PR [`firecrawl/cli`](https://github.com/firecrawl/cli). Build/SDK skills → PR the [`firecrawl`](https://github.com/firecrawl/firecrawl) monorepo (`skills/`). Workflows and everything else → PR [`firecrawl/skills`](https://github.com/firecrawl/skills). Changes made directly in this repo are overwritten by the next sync.
+Workflow skills are authored **here** — PRs welcome. For other skill families: CLI skills (including the research/developer index skills) → PR [`firecrawl/cli`](https://github.com/firecrawl/cli). Build/SDK skills → PR the [`firecrawl`](https://github.com/firecrawl/firecrawl) monorepo (`skills/`). The catalog ([`firecrawl/skills`](https://github.com/firecrawl/skills)) is a read-only distribution repo synced by CI — never PR it directly.
+
+For authoring guidance, see [`skills/firecrawl-workflows/references/workflow-authoring.md`](./skills/firecrawl-workflows/references/workflow-authoring.md).
 
 ## License
 
