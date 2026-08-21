@@ -1,0 +1,66 @@
+name: Sync workflow skills to catalog
+
+# Mirrors skills/ into firecrawl/skills under skills/workflows/.
+# The catalog is a read-only distribution repo; this repo is the source of
+# truth for workflow skills.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+      - ".github/workflows/sync-catalog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalog-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout workflows repo
+        uses: actions/checkout@v6
+        with:
+          path: source
+
+      - name: Checkout catalog
+        uses: actions/checkout@v6
+        with:
+          repository: firecrawl/skills
+          ssh-key: ${{ secrets.CATALOG_DEPLOY_KEY }}
+          path: catalog
+
+      - name: Sync skills/workflows
+        run: |
+          cd catalog
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          rm -rf skills/workflows
+          mkdir -p skills/workflows
+          cp -R ../source/skills/. skills/workflows/
+
+          cat > skills/workflows/README.md <<'EOF'
+          # Workflow skills (mirror)
+
+          Mirror of [`firecrawl/firecrawl-workflows`](https://github.com/firecrawl/firecrawl-workflows) — do not edit here.
+          PR changes against `firecrawl/firecrawl-workflows`; CI overwrites this directory on every sync.
+          EOF
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to sync"
+            exit 0
+          fi
+
+          SHORT_SHA="${GITHUB_SHA:0:7}"
+          git commit -m "Sync from firecrawl/firecrawl-workflows@${SHORT_SHA}" \
+            -m "Source: https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
+
+          # Retry once if another sync landed first; never force-push.
+          git push origin main || { git pull --rebase origin main && git push origin main; }

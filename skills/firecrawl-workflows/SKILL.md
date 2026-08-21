@@ -12,7 +12,7 @@ inputs:
     description: Firecrawl API key for hosted Firecrawl requests when the workflow runs through the CLI or API.
     required: true
 references:
-  - ../../references/workflow-authoring.md
+  - references/workflow-authoring.md
 ---
 
 # Firecrawl Workflows
@@ -81,4 +81,4 @@ Every workflow should return:
 - recommendations or next actions when useful
 - automation inputs for reruns
 
-For authoring new workflow skills, see [workflow-authoring.md](../../references/workflow-authoring.md).
+For authoring new workflow skills, see [workflow-authoring.md](references/workflow-authoring.md).
