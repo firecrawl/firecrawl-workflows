@@ -1,6 +1,6 @@
 ---
 name: firecrawl-lead-gen
-description: Generate structured lead lists from prospect databases and web directories with Firecrawl browser. Use for finding prospects by role, company type, industry, stage, location, technologies, or other criteria and exporting CRM-ready JSON or CSV.
+description: Extract lead lists from a specified prospect database or web directory and export CRM-ready JSON or CSV. Use for source-specific list extraction; use firecrawl-find-leads for discovering new professionals and firecrawl-enrich-lead for supplied people or lead CSVs.
 license: ISC
 metadata:
   author: firecrawl
@@ -15,7 +15,7 @@ inputs:
 
 # Firecrawl Lead Gen
 
-Use this to extract legitimately accessible prospect lists.
+Use this to extract legitimately accessible prospect lists from a specified database or directory. For discovering new professionals, use `firecrawl-find-leads`. For enriching a supplied person or lead CSV, use `firecrawl-enrich-lead` and preserve every input row.
 
 ## Onboarding Interview
 
@@ -48,15 +48,19 @@ Capture visible or legitimately accessible fields:
 # Lead List: [Target]
 
 ## Summary
+
 [Source, filters, count, caveats]
 
 ## Leads
+
 [Table or link to JSON/CSV]
 
 ## Data Gaps
+
 [Masked, unavailable, or paywalled fields]
 
 ## Rerun Inputs
+
 workflow: firecrawl-lead-gen
 target: [description]
 source: [auto/source/url]
