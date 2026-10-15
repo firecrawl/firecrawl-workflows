@@ -1,14 +1,3 @@
----
-name: firecrawl-business-contact-research
-description: "Find published business email addresses, official contact pages, and contact information for companies, shops, and local services. Use when the user asks for sourced business contacts or outreach research, even without naming a tool. Return only published information; do not infer private contacts or invoke retrieval when browsing is forbidden."
-license: ISC
-metadata:
-  author: firecrawl
-  version: "0.1.1"
-  homepage: https://www.firecrawl.dev
-  source: https://github.com/firecrawl/firecrawl-workflows
----
-
 # Business contact research
 
 1. When browsing is permitted and existing evidence is insufficient, use `firecrawl search "<query>" --sources web --json` within the user's allowed sources to find the requested businesses and official contact pages. Use `firecrawl search --help` for supported options; inspect the actual Firecrawl result before claiming retrieval. Reuse adequate current source content already retrieved; do not repeat a fetch solely to call a tool.

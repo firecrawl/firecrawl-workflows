@@ -1,17 +1,6 @@
----
-name: firecrawl-find-leads
-description: "Build a ranked list of professionals matching role, seniority, company size, location, technology or named target companies. Use for prospect lists, lead generation, decision-makers at target accounts, or experts and speakers in a field, even without an explicit search request. Return names, titles, companies and fit, with work emails when asked. Excludes enrichment of supplied people, organizational inboxes, private personal details and sending outreach."
-license: ISC
-metadata:
-  author: firecrawl
-  version: "0.1.1"
-  homepage: https://www.firecrawl.dev
-  source: https://github.com/firecrawl/firecrawl-workflows
----
-
 # Find and qualify leads
 
-Use this workflow to discover new prospects. For enriching an existing person or people already supplied in a list or CSV, use `firecrawl-enrich-lead` instead.
+Use this mode to discover new professionals. For enriching an existing person or people already supplied in a list or CSV, use the enrichment mode in `firecrawl-lead-research` instead.
 
 1. Use the Firecrawl CLI to find matching professionals through Alexandria's people and company sources. Extract the requested roles, company criteria, geography and count. Separate required filters from preferences and distinguish a person's location from company headquarters. Ask only for missing criteria that prevent a useful shortlist. Discover people sources with `firecrawl find-tools --options '{"categories":["people"],"level":"providers","limit":3}' --json`, and company sources with the same command using `"categories":["companies"]` when company criteria need qualification, unless complete matching contracts are already in context. Choose business person-search or enrichment sources whose filters, identifiers and fields fit the request. Browse a selected provider with `firecrawl list <provider> --json` to choose a capability, then inspect its contract with `firecrawl list <provider> <capability> --include-costs --pretty` for its inputs, output and billing; take the least expensive read-only path that answers the question.
 2. When company criteria need qualification, search or enrich companies first, then search for people within matching company domains. For named target companies, resolve those accounts directly. Pass only supported filters; verify remaining requirements against returned records or accessible professional sources. Execute provider capabilities through `firecrawl scrape <provider>/<capability> --options '<JSON matching the selected contract>' --json`, without a URL, and inspect each result. For experts or speakers, also use relevant publications, institutional biographies or past talks; a sales database alone does not establish expertise or speaking availability.

@@ -1,6 +1,6 @@
 ---
 name: firecrawl-website-design-clone
-description: "Extract an existing website's visual system into an implementation-ready DESIGN.md with design tokens, layout, components and image references. Use for recreating a site's visual style, building a page to match a reference URL, or documenting its UI patterns, even without an explicit request to scrape. Excludes creating a new brand and simple logo, color or font lookups for documents."
+description: "Extract an existing website's visual system into DESIGN.md, or collect its existing logo, colors, fonts and homepage messaging for a document. Use for reference-based UI implementation, documenting design patterns, or matching a presentation to a company's website. Excludes inventing a new brand or brand positioning."
 license: ISC
 metadata:
   author: firecrawl
@@ -9,7 +9,11 @@ metadata:
   source: https://github.com/firecrawl/firecrawl-workflows
 ---
 
-# Extract a website's design system
+# Website design and brand assets
+
+Choose the requested artifact before collecting evidence. For an existing logo, palette, fonts or messaging needed by a slide, proposal or other document, read [brand assets](references/brand-assets.md) and return the compact asset reference. A brand-asset lookup does not require a design-system report or full-page screenshot. For a website's UI system or implementation, follow the design-system mode below. If both are requested, reuse the same source evidence.
+
+## Design-system mode
 
 1. Use the Firecrawl CLI to inspect the reference website and extract its design system. Start with the supplied URL and requested pages, reusing adequate captures already available. If only an organization is named, resolve its official site with `firecrawl search "<query>" --sources web --json`; ask when the intended reference is ambiguous.
 2. Capture a representative page with `firecrawl scrape "<url>" --format branding,markdown,images --full-page-screenshot --json -o .firecrawl/design-reference.json`. Omit `--only-main-content` to retain the full page. The JSON contains a screenshot reference, not a downloaded image file; inspect it through a host-supported image viewer before making visual claims. Fetch additional pages only for the requested scope or a material missing pattern.

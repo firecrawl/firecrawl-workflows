@@ -1,14 +1,3 @@
----
-name: firecrawl-brand-identity
-description: "Collect a named organization's existing logo, color palette, fonts, and homepage messaging for a pitch deck, sales presentation, proposal, or other document. Use for requests such as making a slide match a company's website, finding the right logo and brand hex codes, or assembling a website-derived asset pack, even if the user never asks to scrape or search. Return sourced asset links and observed styling so the document can use the actual identity. Excludes inventing a brand, brand positioning advice, and styling from already sufficient supplied assets."
-license: ISC
-metadata:
-  author: firecrawl
-  version: "0.1.1"
-  homepage: https://www.firecrawl.dev
-  source: https://github.com/firecrawl/firecrawl-workflows
----
-
 # Gather identity assets for a document
 
 Start by obtaining the organization's existing website identity when the document requires assets not already supplied. Use `firecrawl scrape --help` for supported options.

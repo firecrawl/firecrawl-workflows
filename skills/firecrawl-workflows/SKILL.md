@@ -15,25 +15,21 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 
 ## Choose The Workflow
 
-- Use [firecrawl-find-leads](../firecrawl-find-leads/SKILL.md) to discover and qualify new professionals against role and company criteria.
-- Use [firecrawl-enrich-lead](../firecrawl-enrich-lead/SKILL.md) to enrich a supplied professional or lead list while preserving input rows.
-- Use [firecrawl-business-contact-research](../firecrawl-business-contact-research/SKILL.md) to find published organizational contact channels.
+- Use [firecrawl-lead-gen](../firecrawl-lead-gen/SKILL.md) to discover and qualify new professional or business prospects, or extract lists from a specified database or directory.
+- Use [firecrawl-lead-research](../firecrawl-lead-research/SKILL.md) to research supplied people or companies, enrich a lead CSV while preserving rows, find published organizational contacts for known businesses, or prepare a meeting brief.
 - Use [firecrawl-job-postings](../firecrawl-job-postings/SKILL.md) to find and verify current job openings.
 - Use [firecrawl-fantasy-sports](../firecrawl-fantasy-sports/SKILL.md) for a fantasy decision grounded in current news and league context.
-- Use [firecrawl-brand-identity](../firecrawl-brand-identity/SKILL.md) for existing logos, colors, fonts and messaging needed by a document.
-- Use [firecrawl-read-docs](../firecrawl-read-docs/SKILL.md) for official documentation, setup, usage, migrations and compatibility. Use the core developer-index guidance for repository implementation or bug evidence beyond the docs.
-- Use [firecrawl-website-design-clone](../firecrawl-website-design-clone/SKILL.md) to extract a website's colors, fonts, spacing, components, and layout patterns into an agent-ready `DESIGN.md`.
+- Use the core `firecrawl-developer-index` skill for official documentation, setup, usage, migrations, compatibility and upstream implementation or bug evidence.
+- Use [firecrawl-website-design-clone](../firecrawl-website-design-clone/SKILL.md) for an existing website's brand assets or its UI system. Return a compact asset reference for a document, or an agent-ready `DESIGN.md` for UI implementation.
 - Use [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md) for literature reviews and paper-backed synthesis, including biomedical, clinical, drug, gene, disease, epidemiology, and public-health topics. It queries Firecrawl's paper index — PubMed, bioRxiv, medRxiv, and arXiv abstracts with full text reachable per paper — rather than searching websites.
 - Use [firecrawl-deep-research](../firecrawl-deep-research/SKILL.md) for sourced multi-source research reports built from **web** evidence: market, policy, technical, or industry topics. Not for literature reviews — when the evidence base is published papers, use `firecrawl-research-papers` above.
 - Use [firecrawl-seo-audit](../firecrawl-seo-audit/SKILL.md) for site structure, on-page SEO, keyword, and SERP audits.
-- Use [firecrawl-lead-research](../firecrawl-lead-research/SKILL.md) for pre-meeting company/person intelligence briefs.
 - Use [firecrawl-qa](../firecrawl-qa/SKILL.md) for live-site QA testing and bug reports.
 - Use [firecrawl-competitive-intel](../firecrawl-competitive-intel/SKILL.md) for recurring pricing, feature, and changelog monitoring.
 - Use [firecrawl-company-directories](../firecrawl-company-directories/SKILL.md) for directory extraction into company lists.
 - Use [firecrawl-dashboard-reporting](../firecrawl-dashboard-reporting/SKILL.md) for dashboard metrics extraction.
 - Use [firecrawl-knowledge-base](../firecrawl-knowledge-base/SKILL.md) for LLM-ready docs, RAG chunks, training data, or docs mirrors.
 - Use [firecrawl-knowledge-ingest](../firecrawl-knowledge-ingest/SKILL.md) for auth-gated or JS-heavy docs portal ingestion.
-- Use [firecrawl-lead-gen](../firecrawl-lead-gen/SKILL.md) for list extraction from a specified database or directory. Use the focused discovery or enrichment workflow for professional research.
 - Use [firecrawl-market-research](../firecrawl-market-research/SKILL.md) for market, financial, and industry research.
 - Use [firecrawl-demo-walkthrough](../firecrawl-demo-walkthrough/SKILL.md) for product flow walkthroughs and UX teardown reports.
 - Use [firecrawl-shop](../firecrawl-shop/SKILL.md) for product research and shopping recommendations.
@@ -56,7 +52,7 @@ Use the host agent's normal way to ask clarifying questions. Do not depend on a 
 
 ## Default Process
 
-1. Confirm the workflow and final artifact.
+1. Identify the matching workflow and requested artifact.
 2. Collect web evidence with Firecrawl through the CLI or equivalent Firecrawl tool surface.
 3. Save or cite source evidence so the final claims are traceable.
 4. Run independent research units in parallel when available.

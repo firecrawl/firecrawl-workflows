@@ -1,17 +1,6 @@
----
-name: firecrawl-enrich-lead
-description: "Enrich one professional or a supplied lead list/CSV and return a sourced contact card or enriched table with name, current title, employer, location, professional profile URL and employment history. Use for a name and company, a role at a named company, a professional profile URL or an email, even without an explicit search request. Include work email when asked, and company size, funding or technologies on request. Excludes discovering new prospects, organizational inboxes, private personal details and sending outreach."
-license: ISC
-metadata:
-  author: firecrawl
-  version: "0.1.1"
-  homepage: https://www.firecrawl.dev
-  source: https://github.com/firecrawl/firecrawl-workflows
----
-
 # Enrich supplied leads
 
-Handle one professional or the people in a supplied list or CSV. Apply the workflow to each supplied identity without adding new prospects; use `firecrawl-find-leads` to build a new prospect list, not to resolve a supplied person or role.
+Handle one professional or the people in a supplied list or CSV. Apply the workflow to each supplied identity without adding new prospects; use `firecrawl-lead-gen` to build a new prospect list, not to resolve a supplied person or role.
 
 1. Use the Firecrawl CLI to look up the professional through Alexandria's people sources. Start from the supplied identifiers and requested fields. Discover people sources with `firecrawl find-tools --options '{"categories":["people"],"level":"providers","limit":3}' --json`, and company sources with the same command using `"categories":["companies"]` when employer identity needs resolution or requested company context needs enrichment, unless complete matching contracts are already in context. Choose business person-search or enrichment sources whose filters, identifiers and fields fit the request. Browse a selected provider with `firecrawl list <provider> --json` to choose a capability, then inspect its contract with `firecrawl list <provider> <capability> --include-costs --pretty` for its inputs, output and billing; use only their returned provider, capability and inputs. Take the least expensive read-only path that answers the question. Catalogue matches are not person records.
 2. Resolve identity before enriching. For an ambiguous request such as a role at a company, search with supported title and company-domain filters, read the previews and select the matching person. Use the strongest supplied identifier the selected contract accepts: that provider's person ID, a professional profile URL, or an email. For a name, include the employer and any supported location context; resolve a required company domain rather than guessing it. Check the returned identity and any match-confidence metadata against the supplied context; a successful response alone does not establish the match. Reuse an already resolved identity rather than searching again. Provider IDs are specific to their source; resolve identity again when switching providers. If a match returns no person, search with looser supported filters while retaining known identity constraints. For a single lead, if identity remains uncertain, show up to three plausible candidates and ask the user to choose. Never enrich a list of guesses or merge conflicting profiles.
