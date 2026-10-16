@@ -1,6 +1,6 @@
 # Firecrawl Workflows Repo
 
-**Source of truth** for Firecrawl workflow skills. All 16 workflow skills under `skills/` are authored here and safe to edit. CI mirrors `skills/` into the `firecrawl/skills` catalog under `skills/workflows/` on every push to main.
+**Source of truth** for Firecrawl workflow skills. All 18 workflow skills under `skills/` are authored here and safe to edit. CI mirrors `skills/` into the `firecrawl/skills` catalog under `skills/workflows/` on every push to main.
 
 ## Routing rule
 
