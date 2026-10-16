@@ -2,7 +2,7 @@
   "name": "firecrawl-workflows",
   "displayName": "Firecrawl Workflows",
   "description": "Outcome-focused Firecrawl workflow skills for research, SEO audits, QA, knowledge bases, lead lists, dashboard reporting, shopping, and design-system extraction.",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "author": {
     "name": "Firecrawl",
     "url": "https://www.firecrawl.dev"
@@ -13,8 +13,6 @@
   "keywords": ["firecrawl", "workflows", "research", "seo", "qa", "knowledge-base", "lead-gen", "design-system"],
   "skills": [
     "./skills/firecrawl-workflows",
-    "./skills/firecrawl-fantasy-sports",
-    "./skills/firecrawl-job-postings",
     "./skills/firecrawl-website-design-clone",
     "./skills/firecrawl-deep-research",
     "./skills/firecrawl-seo-audit",
