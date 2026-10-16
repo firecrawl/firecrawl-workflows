@@ -7,6 +7,12 @@ metadata:
   version: "0.1.1"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/firecrawl-workflows
+inputs:
+  - name: FIRECRAWL_API_KEY
+    description: Firecrawl API key for hosted Firecrawl requests when the workflow runs through the CLI or API.
+    required: true
+references:
+  - references/workflow-authoring.md
 ---
 
 # Firecrawl Workflows
@@ -19,7 +25,7 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 - Use [firecrawl-lead-research](../firecrawl-lead-research/SKILL.md) to research supplied people or companies, enrich a lead CSV while preserving rows, find published organizational contacts for known businesses, or prepare a meeting brief.
 - Use [firecrawl-job-postings](../firecrawl-job-postings/SKILL.md) to find and verify current job openings.
 - Use [firecrawl-fantasy-sports](../firecrawl-fantasy-sports/SKILL.md) for a fantasy decision grounded in current news and league context.
-- Use the core `firecrawl-developer-index` skill for official documentation, setup, usage, migrations, compatibility and upstream implementation or bug evidence.
+- Use the core `firecrawl-developer-index` skill (installed with the Firecrawl CLI skills) for official documentation, setup, usage, migrations, compatibility and upstream implementation or bug evidence.
 - Use [firecrawl-website-design-clone](../firecrawl-website-design-clone/SKILL.md) for an existing website's brand assets or its UI system. Return a compact asset reference for a document, or an agent-ready `DESIGN.md` for UI implementation.
 - Use [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md) for literature reviews and paper-backed synthesis, including biomedical, clinical, drug, gene, disease, epidemiology, and public-health topics. It queries Firecrawl's paper index — PubMed, bioRxiv, medRxiv, and arXiv abstracts with full text reachable per paper — rather than searching websites.
 - Use [firecrawl-deep-research](../firecrawl-deep-research/SKILL.md) for sourced multi-source research reports built from **web** evidence: market, policy, technical, or industry topics. Not for literature reviews — when the evidence base is published papers, use `firecrawl-research-papers` above.

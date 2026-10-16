@@ -7,6 +7,10 @@ metadata:
   version: "0.1.1"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/firecrawl-workflows
+inputs:
+  - name: FIRECRAWL_API_KEY
+    description: Firecrawl API key for hosted Firecrawl requests.
+    required: true
 ---
 
 # Firecrawl Lead Gen
@@ -25,7 +29,7 @@ Separate required filters from preferences and a person's location from company 
 
 Return the requested fields with source URLs or provider provenance, canonical record/profile IDs and known source-update dates. Distinguish lookup time from record freshness; unknown freshness remains unknown. Preserve conflicting values with their sources. Do not infer missing company facts, identities or contact details.
 
-For people, deduplicate discoveries by stable person/profile ID or canonical profile URL, not employer domain or name alone. Include work email only when requested and returned as an actual address; keep personal-email and phone-reveal options disabled. For company records, deduplicate by a supported company ID or canonical domain. Do not merge uncertain identities or relax mandatory filters to fill the requested count.
+For people, deduplicate discoveries by stable person/profile ID or canonical profile URL, not employer domain or name alone. Include work email only when requested and returned as an actual address; do not use options or capabilities that reveal personal email addresses or phone numbers. For company records, deduplicate by a supported company ID or canonical domain. Do not merge uncertain identities or relax mandatory filters to fill the requested count.
 
 For requested organizational contacts on newly discovered businesses, check each business's own contact, about or footer page when permitted. Return published organizational inboxes, shared business phones or contact forms with their source links. Exclude named employees' direct addresses from this organizational-contact mode, distinguish forms from emails, and leave absent values blank. Never infer an address from a name or domain. Disclose when source restrictions prevent official-page verification. Researching contacts for already supplied businesses belongs in `firecrawl-lead-research`.
 

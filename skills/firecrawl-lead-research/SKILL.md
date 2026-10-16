@@ -7,6 +7,10 @@ metadata:
   version: "0.1.1"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/firecrawl-workflows
+inputs:
+  - name: FIRECRAWL_API_KEY
+    description: Firecrawl API key for hosted Firecrawl requests.
+    required: true
 ---
 
 # Firecrawl Lead Research
@@ -23,9 +27,9 @@ Use this for people or companies the user has already supplied. Infer the reques
 
 Read supplied official URLs with `firecrawl scrape "<url>" --json`. Use `firecrawl search "<query>" --sources web --json` for missing recent developments or professional evidence, and scrape a result only when its passage is insufficient. Respect requested sources and no-browse instructions.
 
-Collect only context relevant to the meeting: company products, priorities and size/stage signals; dated news, funding, launches, hiring or partnerships; professional roles, public profiles, talks or interviews; and relevant industry context. Do not infer a current role from a stale profile or a specific open vacancy from general hiring activity. If requested company facts need provider data, discover company sources with `firecrawl find-tools --options '{"categories":["companies"],"level":"providers","limit":3}' --json`, browse the selected provider with `firecrawl list <provider> --json`, and inspect the selected contract with `firecrawl list <provider> <capability> --include-costs --pretty` before execution through `firecrawl scrape <provider>/<capability> --options '<JSON matching the selected contract>' --json`. Reuse a complete contract already available; retrieve only missing requested fields.
+Collect only context relevant to the meeting: company products, priorities and size/stage signals; dated news, funding, launches, hiring or partnerships; professional roles, public profiles, talks or interviews; and relevant industry context. Do not infer a current role from a stale profile or a specific open vacancy from general hiring activity. If requested company facts need provider data, discover company capabilities with `firecrawl find-tools --options '{"query":"<company facts needed>","categories":["companies"],"limit":5}' --json` and inspect the selected contract with `firecrawl list <provider> <capability> --include-costs --pretty` before execution through `firecrawl scrape <provider>/<capability> --options '<JSON matching the selected contract>' --json`. Reuse a complete contract already available; retrieve only missing requested fields.
 
-Resolve the company by supported domain or canonical identifiers before associating a person with it. Keep provider IDs specific to their source; re-resolve identity when switching providers. Attribute provider records separately from facts corroborated on official pages. Include source-update dates when returned and lookup time separately; missing freshness stays unknown. Retain conflicts rather than silently overwriting them. Inspect each `data.alexandria[]` item's error and contract-defined response path, not only outer success. Alexandria requires authenticated access; on blocked or unavailable provider routes, use permitted public sources or report the missing facts without repeated retries.
+Resolve the company by supported domain or canonical identifiers before associating a person with it. Keep provider IDs specific to their source; re-resolve identity when switching providers. Attribute provider records separately from facts corroborated on official pages. Include source-update dates when returned and lookup time separately; missing freshness stays unknown. Retain conflicts rather than silently overwriting them. Inspect each `data.alexandria[]` item's error and contract-defined response path, not only outer success. Alexandria requires authenticated access; on blocked or unavailable provider routes, use permitted public sources or report the missing facts without repeated retries. If execution returns `THIRD_PARTY_DATA_TERMS_REQUIRED`, give the user the returned terms URL; an organization admin must accept the provider's terms. Never accept terms without the user's explicit approval, and continue with the permitted public-source fallback.
 
 ## Deliverable
 
