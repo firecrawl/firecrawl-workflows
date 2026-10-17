@@ -1,6 +1,6 @@
 ---
 name: firecrawl-knowledge-ingest
-description: Ingest public or authenticated knowledge bases and docs portals with Firecrawl browser. Use for JS-heavy docs, login-gated portals, paginated help centers, support knowledge bases, or structured JSON/markdown extraction from documentation sites.
+description: "Export documentation portals, help centers and API reference sites into local markdown or JSON with Firecrawl browser, including pages that render with JavaScript, hide content behind collapsible navigation or paginate. Use when the user wants a docs site, help center or support knowledge base saved as files, even without an explicit request to scrape."
 license: ISC
 metadata:
   author: firecrawl
