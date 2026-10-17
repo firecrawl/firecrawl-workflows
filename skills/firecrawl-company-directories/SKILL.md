@@ -1,6 +1,6 @@
 ---
 name: firecrawl-company-directories
-description: "Extract structured company lists with Firecrawl from any page or site that lists companies: accelerator batches, VC portfolios, member and sponsor lists, marketplaces and app directories, YC, Crunchbase, Product Hunt or G2. Use when the user wants those companies as a CSV, JSON, CRM-ready list or research table, even without an explicit request to scrape."
+description: "Extract structured company lists with Firecrawl from any page or site that lists companies: accelerator batches, VC portfolios, member and sponsor lists, marketplaces, app directories and startup databases. Use when the user wants those companies as a CSV, JSON, CRM-ready list or research table, even without an explicit request to scrape."
 license: ISC
 metadata:
   author: firecrawl
