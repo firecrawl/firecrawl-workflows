@@ -1,6 +1,6 @@
 ---
 name: firecrawl-shop
-description: Research products across the web with Firecrawl and produce a shopping recommendation or cart-ready summary. Use when the user wants to compare products, find the best option, evaluate reviews, respect budget/preferences, or shop with a saved browser session.
+description: "Researches products across retailers and review sites with Firecrawl and recommends what to buy within the user's budget and preferences, with current prices and sources. Use when the user wants to compare products, find the best option or check reviews before buying, since prices and models change faster than training data. Adds to a cart only when asked and a signed-in browser profile exists."
 license: ISC
 metadata:
   author: firecrawl
