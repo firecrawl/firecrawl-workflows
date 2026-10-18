@@ -22,7 +22,8 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 ## Choose The Workflow
 
 - Use [firecrawl-lead-gen](../firecrawl-lead-gen/SKILL.md) to discover and qualify new professional or business prospects, or extract lists from a specified database or directory.
-- Use [firecrawl-lead-research](../firecrawl-lead-research/SKILL.md) to research supplied people or companies, enrich a lead CSV while preserving rows, find published organizational contacts for known businesses, or prepare a meeting brief.
+- Use [firecrawl-lead-research](../firecrawl-lead-research/SKILL.md) to research supplied people or companies, enrich a lead CSV while preserving rows, or prepare a meeting brief.
+- Use [firecrawl-business-contacts](../firecrawl-business-contacts/SKILL.md) to find published organizational contacts for known businesses.
 - Use [firecrawl-job-postings](../firecrawl-job-postings/SKILL.md) to find and verify current job openings.
 - Use [firecrawl-fantasy-sports](../firecrawl-fantasy-sports/SKILL.md) for a fantasy decision grounded in current news and league context.
 - Use the core `firecrawl-developer-index` skill (installed with the Firecrawl CLI skills) for official documentation, setup, usage, migrations, compatibility and upstream implementation or bug evidence.
