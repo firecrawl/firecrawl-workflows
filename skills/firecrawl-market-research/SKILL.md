@@ -1,6 +1,6 @@
 ---
 name: firecrawl-market-research
-description: Extract market, financial, earnings, industry, and company metrics with Firecrawl. Use when the user asks for market research, industry trends, public company data, financial comparisons, earnings research, or structured market reports.
+description: "Research markets and companies with Firecrawl using current, cited figures: market size, growth, trends, financials and earnings. Use when the user asks for market research, an industry overview or a comparison of companies by the numbers, since these figures change faster than training data."
 license: ISC
 metadata:
   author: firecrawl

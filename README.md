@@ -10,11 +10,15 @@ Preferred — the full catalog (includes these workflows):
 npx skills add firecrawl/skills
 ```
 
-Installing directly from this repo also works and serves the same 16 workflow skills:
+Installing directly from this repo also works and serves the same 19 workflow skills:
 
 ```bash
 npx skills add firecrawl/firecrawl-workflows
 ```
+
+Existing workflows cover professional discovery in `firecrawl-lead-gen`; enrichment of supplied people and companies and meeting briefs in `firecrawl-lead-research`; published organizational contacts in `firecrawl-business-contacts`; and brand assets or UI systems in `firecrawl-website-design-clone`. Current job openings and fantasy decisions have their own workflow skills. Official documentation lookup belongs to the core `firecrawl-developer-index` skill.
+
+With the Firecrawl CLI installed, use `firecrawl setup workflows` to install the workflow set. The workflows use supported CLI commands, inspect discovered provider contracts before execution and preserve source evidence in their results. Alexandria provider access requires an authenticated Firecrawl account; workflows describe public-source fallbacks where applicable.
 
 ## Contributing
 

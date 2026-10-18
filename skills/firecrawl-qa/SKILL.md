@@ -1,6 +1,6 @@
 ---
 name: firecrawl-qa
-description: QA test a live website with Firecrawl browser and scrape evidence. Use when the user wants exploratory QA, form testing, navigation/link checks, responsive checks, performance observations, bug reports, or a pre-launch quality review.
+description: "Test a live website with Firecrawl browser and write up what's broken: links, forms, mobile layout and console errors. Use for pre-launch checks, bug hunts or confirming a deployed site works."
 license: ISC
 metadata:
   author: firecrawl
