@@ -4,7 +4,7 @@ Prepare for a meeting with a supplied person or company.
 
 1. **Company and person data.** Enrich the company and the person through Alexandria with the workflow in the skill: company profile, headcount, funding, and the person's current role.
 2. **Recent activity.** Find dated news, funding, launches, hiring and partnerships with `firecrawl search "<company> news" --sources web --json`. Read supplied official URLs with `firecrawl scrape "<url>" --json`, and scrape a result only when its passage is not enough.
-3. **Professional context.** Find the person's public profile, talks or interviews. Do not infer a current role from a stale profile.
+3. **Professional context.** Find the person's talks, interviews or posts on the web. Take the current role from step 1, not from a stale page.
 
 ## Output
 

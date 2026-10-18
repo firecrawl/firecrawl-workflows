@@ -1,6 +1,6 @@
 ---
 name: firecrawl-business-contacts
-description: "Find the published business contacts of known companies with Firecrawl: press and media, sales, partnerships and support inboxes, shared business phone numbers and official contact forms, taken from the companies' own websites. Use when the user asks how to contact a company or wants its press, sales, support or partnership contact, since contact pages change and an address must come from the page, not memory. Not for named people's details (use firecrawl-lead-research) or finding new prospects (use firecrawl-lead-gen)."
+description: "Find the published business contacts of companies with Firecrawl, whether the user names them or describes them by type and place: press and media, sales, partnerships and support inboxes, shared business phone numbers and official contact forms, taken from the companies' own websites. Use when the user asks how to contact a company or wants published business emails, phone numbers or press, sales, support or partnership contacts, since contact pages change and an address must come from the page, not memory. Not for named people's details (use firecrawl-lead-research) or finding people to reach out to (use firecrawl-lead-gen)."
 license: ISC
 metadata:
   author: firecrawl
@@ -19,10 +19,11 @@ Find the contact channels a company publishes for itself, and cite the page each
 
 ## Workflow
 
-1. **Find the official pages.** Search with `firecrawl search "<company> press contact" --sources web --json` (or sales, support, partnerships, contact). Prefer the company's own domain, newsroom and help center.
-2. **Read them.** Use `firecrawl scrape "<url>" --json` on the contact, press, about or footer page to confirm each value appears there. A URL scrape returns the page itself.
-3. **Fall back only when needed.** If the company's site lists nothing, a directory or third-party page may be used, labeled as such.
-4. **Return the result** in the format below.
+1. **Identify the companies.** If the user describes them instead of naming them, find them with `firecrawl search "<type of business> in <place>" --sources web --json` and note each one's own website.
+2. **Find the official pages.** Search with `firecrawl search "<company> press contact" --sources web --json` (or sales, support, partnerships, contact). Prefer the company's own domain, newsroom and help center.
+3. **Read them.** Use `firecrawl scrape "<url>" --json` on the contact, press, about or footer page to confirm each value appears there. A URL scrape returns the page itself.
+4. **Fall back only when needed.** If the company's site lists nothing, a directory or third-party page may be used, labeled as such.
+5. **Return the result** in the format below.
 
 ## Output
 
