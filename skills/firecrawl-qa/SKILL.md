@@ -1,6 +1,6 @@
 ---
 name: firecrawl-qa
-description: "Test a live website with Firecrawl browser and write up what's broken: links, forms, mobile layout and console errors. Use for pre-launch checks, bug hunts or confirming a deployed site works."
+description: "Test a live website with Firecrawl browser and write up what's broken: links, forms, mobile layout, performance and console errors. Use for pre-launch checks, bug hunts or confirming a deployed site works."
 license: ISC
 metadata:
   author: firecrawl
