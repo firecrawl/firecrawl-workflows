@@ -1,10 +1,10 @@
 ---
 name: firecrawl-workflows
-description: Run focused Firecrawl workflows for research, documentation lookup, SEO audits, QA, lead discovery and enrichment, business contacts, current jobs, fantasy decisions, US legal primary sources, brand assets, knowledge bases and website design systems. Use when the user wants a sourced answer or deliverable from a workflow rather than raw extraction or product-code integration.
+description: Run focused Firecrawl workflows for research, documentation lookup, SEO audits, QA, lead discovery and enrichment, business contacts, current jobs, fantasy decisions, US court opinions, SEC filings and patents, brand assets, knowledge bases and website design systems. Use when the user wants a sourced answer or deliverable from a workflow rather than raw extraction or product-code integration.
 license: ISC
 metadata:
   author: firecrawl
-  version: "0.1.1"
+  version: "0.1.2"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/firecrawl-workflows
 inputs:
@@ -38,7 +38,7 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 - Use [firecrawl-knowledge-base](../firecrawl-knowledge-base/SKILL.md) for LLM-ready docs, RAG chunks, training data, or docs mirrors.
 - Use [firecrawl-knowledge-ingest](../firecrawl-knowledge-ingest/SKILL.md) for auth-gated or JS-heavy docs portal ingestion.
 - Use [firecrawl-market-research](../firecrawl-market-research/SKILL.md) for market, financial, and industry research.
-- Use [firecrawl-legal-research](../firecrawl-legal-research/SKILL.md) for US legal primary sources: court opinions and government legal material, SEC filings and patents, returned as a cited source list with a note that it is not legal advice.
+- Use [firecrawl-legal-research](../firecrawl-legal-research/SKILL.md) for US court opinions, statutes and regulations, EDGAR full-text filing searches and patents, returned as a cited source list with a note that it is not legal advice. Financial analysis of filings stays in `firecrawl-market-research`.
 - Use [firecrawl-demo-walkthrough](../firecrawl-demo-walkthrough/SKILL.md) for product flow walkthroughs and UX teardown reports.
 - Use [firecrawl-shop](../firecrawl-shop/SKILL.md) for product research and shopping recommendations.
 

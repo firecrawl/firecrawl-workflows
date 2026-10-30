@@ -25,11 +25,13 @@ https://govinfo.gov/content/pkg/USCOURTS-ca9-23-15953/pdf/USCOURTS-ca9-23-15953-
   favor of police officers in an action brought pursuant to 42 U.S.C. § 1983 ...
 ```
 
-The first two results are copies of the same opinion (docket 23-15465) from two sites. Reading the first two pages of the court's copy gives the caption and date:
+The first two results share docket number 23-15465 and the same summary, one from govinfo.gov and one from the court's site. Reading the first two pages of the court's copy gives the caption and date:
 
 ```bash
 firecrawl scrape "https://cdn.ca9.uscourts.gov/datastore/opinions/2024/08/09/23-15465.pdf" --max-pages 2 --json
 ```
+
+Condensed from the first page:
 
 ```text
 FOR PUBLICATION
@@ -65,9 +67,25 @@ firecrawl scrape sec-gov/filings/search --options '{"query":"\"material cybersec
 
 Only 3 of the 18 hits are 8-K documents listing Item 1.05. The other 15 are exhibits (EX-99.1, EX-10.1 and EX-2.1) to 8-Ks filed under other items, such as 2.02 and 1.01, that contain the phrase. Check the `items` codes or read the document before calling a filing an incident disclosure. The `forms` filter also matched an amendment (8-K/A). Firecrawl credits used: 5 (discovery and the contract read cost 0).
 
+The CIK on any hit lists that company's own filings with `filings/filings`. For Bitcoin Depot (CIK 1901799) the ticker `BTM` returned `not_found` at 0 Firecrawl credits, and the CIK worked:
+
+```bash
+firecrawl scrape sec-gov/filings/filings --options '{"cik":1901799,"forms":["8-K"],"from":"2026-01-01","limit":5}' --json
+```
+
+```text
+8-K  2026-05-19  Item 3.01
+8-K  2026-05-18  Items 1.03, 2.04, 5.02, 7.01, 9.01
+8-K  2026-05-12  Items 2.02, 5.02
+8-K  2026-04-08  Items 1.05, 9.01
+8-K  2026-03-24  Items 5.02, 7.01, 9.01
+```
+
+Firecrawl credits used: 5.
+
 ## Patents: USPTO Patent Public Search
 
-Question: recent US patent publications with "quantum computing" in the title.
+Question: recent US patents and pre-grant publications with "quantum computing" in the title. With `databases` omitted, the search covers pre-grant publications (US-PGPUB), granted patents (USPAT) and OCR of pre-1976 patents (USOCR).
 
 ```bash
 firecrawl search "search US patents by title or assignee" --sources alexandria --json
@@ -97,4 +115,4 @@ The record for the first result:
 firecrawl scrape uspto-gov/intellectual-property/patent_document --options '{"number":"US-20260340474-A1"}' --json
 ```
 
-It returned the abstract, inventors and applicants with their locations, CPC codes and continuity data (a US provisional application, 63794979). Claims, examiners and references were empty for this pre-grant publication; the contract's `include_full_text: true` option adds the claims and description HTML. Firecrawl credits used: 5 for the search and 5 for the document.
+It returned the abstract, inventors and applicants with their locations, CPC codes and continuity data (a US provisional application, 63794979). Claims and description were null because `include_full_text` was not set; that option adds the claims and description HTML. Examiners and cited references were empty for this pre-grant publication. Firecrawl credits used: 5 for the search and 5 for the document.
