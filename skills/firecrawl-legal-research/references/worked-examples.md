@@ -42,7 +42,7 @@ Argued and Submitted March 7, 2024 Las Vegas, Nevada
 Filed August 9, 2024
 ```
 
-That scrape cost 2 Firecrawl credits, one per parsed page. Treat results as one document only when the court, docket number and decision date match. Firecrawl credits used for the search: 0.
+That scrape cost 2 Firecrawl credits, one per parsed page. The opinion has 19 pages, so parsing all of it would cost 19. Treat results as one document only when the court, docket number and decision date match. Firecrawl credits used for the search: 0.
 
 ## SEC filings: EDGAR full-text search
 
@@ -67,7 +67,7 @@ firecrawl scrape sec-gov/filings/search --options '{"query":"\"material cybersec
 
 Only 3 of the 18 hits are 8-K documents listing Item 1.05. The other 15 are exhibits (EX-99.1, EX-10.1 and EX-2.1) to 8-Ks filed under other items, such as 2.02 and 1.01, that contain the phrase. Check the `items` codes or read the document before calling a filing an incident disclosure. The `forms` filter also matched an amendment (8-K/A). Firecrawl credits used: 5 (discovery and the contract read cost 0).
 
-The CIK on any hit lists that company's own filings with `filings/filings`. For Bitcoin Depot (CIK 1901799) the ticker `BTM` returned `not_found` at 0 Firecrawl credits, and the CIK worked:
+Pass the CIK from any hit to `filings/filings` to list that company's own filings. For Bitcoin Depot (CIK 1901799) the ticker `BTM` returned `not_found` at 0 Firecrawl credits, and the CIK worked:
 
 ```bash
 firecrawl scrape sec-gov/filings/filings --options '{"cik":1901799,"forms":["8-K"],"from":"2026-01-01","limit":5}' --json

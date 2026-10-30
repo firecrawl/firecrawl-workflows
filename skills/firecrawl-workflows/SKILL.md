@@ -38,7 +38,7 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 - Use [firecrawl-knowledge-base](../firecrawl-knowledge-base/SKILL.md) for LLM-ready docs, RAG chunks, training data, or docs mirrors.
 - Use [firecrawl-knowledge-ingest](../firecrawl-knowledge-ingest/SKILL.md) for auth-gated or JS-heavy docs portal ingestion.
 - Use [firecrawl-market-research](../firecrawl-market-research/SKILL.md) for market, financial, and industry research.
-- Use [firecrawl-legal-research](../firecrawl-legal-research/SKILL.md) for US court opinions, statutes and regulations, EDGAR full-text filing searches and patents, returned as a cited source list with a note that it is not legal advice. Financial analysis of filings stays in `firecrawl-market-research`.
+- Use [firecrawl-legal-research](../firecrawl-legal-research/SKILL.md) for US court opinions, statutes and regulations, SEC filings by full-text search or by company, and patents, returned as a cited source list with a note that it is not legal advice. Financial analysis of filings stays in `firecrawl-market-research`.
 - Use [firecrawl-demo-walkthrough](../firecrawl-demo-walkthrough/SKILL.md) for product flow walkthroughs and UX teardown reports.
 - Use [firecrawl-shop](../firecrawl-shop/SKILL.md) for product research and shopping recommendations.
 
