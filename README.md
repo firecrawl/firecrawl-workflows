@@ -10,7 +10,7 @@ Preferred — the full catalog (includes these workflows):
 npx skills add firecrawl/skills
 ```
 
-Installing directly from this repo also works and serves the same 19 workflow skills:
+Installing directly from this repo also works and serves the same 20 workflow skills:
 
 ```bash
 npx skills add firecrawl/firecrawl-workflows

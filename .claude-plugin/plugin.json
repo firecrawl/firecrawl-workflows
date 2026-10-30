@@ -27,6 +27,7 @@
     "./skills/firecrawl-market-research",
     "./skills/firecrawl-research-papers",
     "./skills/firecrawl-demo-walkthrough",
-    "./skills/firecrawl-shop"
+    "./skills/firecrawl-shop",
+    "./skills/firecrawl-legal-research"
   ]
 }
