@@ -75,11 +75,18 @@ firecrawl scrape sec-gov/filings/filings --options '{"cik":1901799,"forms":["8-K
 
 ```text
 8-K  2026-05-19  Item 3.01
+     https://www.sec.gov/Archives/edgar/data/1901799/000119312526230708/d228011d8k.htm
 8-K  2026-05-18  Items 1.03, 2.04, 5.02, 7.01, 9.01
+     https://www.sec.gov/Archives/edgar/data/1901799/000119312526227832/d130621d8k.htm
 8-K  2026-05-12  Items 2.02, 5.02
+     https://www.sec.gov/Archives/edgar/data/1901799/000119312526219660/btm-20260512.htm
 8-K  2026-04-08  Items 1.05, 9.01
+     https://www.sec.gov/Archives/edgar/data/1901799/000119312526147772/btm-20260406.htm
 8-K  2026-03-24  Items 5.02, 7.01, 9.01
+     https://www.sec.gov/Archives/edgar/data/1901799/000119312526121822/btm-20260319.htm
 ```
+
+These records carry the filing link as `primary_document_url`; `filings/search` hits call it `document_url`.
 
 Firecrawl credits used: 5.
 
