@@ -1,6 +1,6 @@
 # Worked Examples
 
-Runs from November 1, 2026 (UTC) with the Firecrawl CLI 1.26.24. Output is trimmed to the first results; counts and costs are as returned. Figures change as companies file and markets trade, so rerun before relying on them.
+Runs from November 1, 2026 (UTC) with the Firecrawl CLI 1.26.24. Output is trimmed to the first results; counts and costs are as returned. Figures change as companies file and markets trade, so rerun before relying on them. No provider call in these runs returned `data.alexandria[0].error`, and none needed terms acceptance on the test key; another key can differ.
 
 ## Company financials: Fiscal.ai checked against SEC XBRL facts
 
@@ -56,7 +56,7 @@ firecrawl scrape benzinga/calendar/removed --options '{"type":"ratings","pageSiz
 firecrawl scrape benzinga/news/press-releases --options '{"tickers":"AAPL","dateFrom":"2026-10-01","dateTo":"2026-11-01","pageSize":5,"displayOutput":"headline"}' --json
 ```
 
-The free `calendar/removed` call returned 5 records with no `error`, which confirms the key can reach Benzinga before spending Firecrawl credits. The press release call returned 5 releases, `"attribution": "Powered by Benzinga Data"`. The first three:
+The free `calendar/removed` call returned 5 records with no `error`, which confirms the key can reach Benzinga before spending Firecrawl credits. The Benzinga tools listed no earnings or economic calendar, so earnings dates come from `fiscal-ai` `events/calendar`. The press release call returned 5 releases, `"attribution": "Powered by Benzinga Data"`. The first three:
 
 ```text
 PRNewswire     Sat, 03 Oct 2026 07:30:00 -0400  tickers IBKR, XYZ, AAPL
@@ -123,10 +123,3 @@ No change         Yes 0.275   No 0.725
 ```
 
 The response has no page URL; the event page is https://polymarket.com/event/fed-decision-in-december-20260729232808632. The event description names the FOMC statement after the December 8-9, 2026 meeting as its resolution source. `outcomePrices` are traded share prices; report them as prices with their time, not as a forecast. Firecrawl credits used: 5 for the ticker; Polymarket and discovery cost 0.
-
-## Failed calls and gaps in these runs
-
-- No provider call returned `data.alexandria[0].error` in these runs, and no terms acceptance was required for Fiscal.ai or Benzinga on this key. Another key can differ, so run the free `fiscal-ai` `company/list` or `benzinga` `calendar/removed` first.
-- The Benzinga tools in Firecrawl Alexandria returned no earnings or economic calendar; use `fiscal-ai` `events/calendar` for earnings dates.
-
-Total for these runs: 45 Firecrawl credits.
