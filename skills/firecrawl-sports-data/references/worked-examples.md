@@ -89,7 +89,7 @@ firecrawl scrape polymarket/search/query --options '{"q":"Chiefs vs. Broncos","l
 
 `sports/list` returned 494 entries; the NFL entry has `primaryTagId: 450` and `resolution: https://www.nfl.com/`. The search returned `totalResults: 2` events. The game event `nfl-kc-den-2026-11-01` (event page built from the slug: https://polymarket.com/event/nfl-kc-den-2026-11-01, updated 2026-11-01T20:00:20Z, `endDate` 2026-11-01T21:25:00Z, the game's start time) held 305 markets across 32 `sportsMarketType` values, including 34 `spreads` and 21 `totals`. Its moneyline market, as returned:
 
-```json
+```text
 {
   "id": "5603325",
   "question": "Chiefs vs. Broncos",
@@ -107,7 +107,7 @@ The second event was the season series market (event page built from the slug: h
 
 A failed call: `events/by-slug` with a slug that does not exist (`nfl-kc-den-2026-11-99`) returned, inside `"success": true`:
 
-```json
+```text
 {
   "code": "provider_error",
   "message": "We couldn’t complete this request. Please try again later.",
