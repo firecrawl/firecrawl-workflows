@@ -1,10 +1,10 @@
 ---
 name: firecrawl-workflows
-description: Run focused Firecrawl workflows for research, documentation lookup, SEO audits, QA, lead discovery and enrichment, business contacts, current jobs, fantasy decisions, US court opinions, SEC filings and patents, brand assets, knowledge bases and website design systems. Use when the user wants a sourced answer or deliverable from a workflow rather than raw extraction or product-code integration.
+description: Run focused Firecrawl workflows for research, documentation lookup, SEO audits, QA, lead discovery and enrichment, business contacts, current jobs, fantasy decisions, sports data, US court opinions, SEC filings and patents, company financials and market data, drug, device and trial records, company due diligence, travel, real estate, brand assets, knowledge bases and website design systems. Use when the user wants a sourced answer or deliverable from a workflow rather than raw extraction or product-code integration.
 license: ISC
 metadata:
   author: firecrawl
-  version: "0.1.2"
+  version: "0.1.3"
   homepage: https://www.firecrawl.dev
   source: https://github.com/firecrawl/firecrawl-workflows
 inputs:
@@ -24,11 +24,12 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 - Use [firecrawl-lead-gen](../firecrawl-lead-gen/SKILL.md) to discover and qualify new professional or business prospects, or extract lists from a specified database or directory.
 - Use [firecrawl-lead-research](../firecrawl-lead-research/SKILL.md) to research supplied people or companies, enrich a lead CSV while preserving rows, or prepare a meeting brief.
 - Use [firecrawl-business-contacts](../firecrawl-business-contacts/SKILL.md) to find published organizational contacts for named or described businesses.
-- Use [firecrawl-job-postings](../firecrawl-job-postings/SKILL.md) to find and verify current job openings.
+- Use [firecrawl-job-postings](../firecrawl-job-postings/SKILL.md) to find and verify current job openings, reading Greenhouse, Ashby and Workday boards through Firecrawl Alexandria with a public-web fallback.
 - Use [firecrawl-fantasy-sports](../firecrawl-fantasy-sports/SKILL.md) for a fantasy decision grounded in current news and league context.
+- Use [firecrawl-sports-data](../firecrawl-sports-data/SKILL.md) for dated scores, schedules, standings, rosters, injury reports, Sleeper league data, ticket listings and sports prediction market prices from Firecrawl Alexandria providers, each with a link and timestamp.
 - Use the core `firecrawl-developer-index` skill (installed with the Firecrawl CLI skills) for official documentation, setup, usage, migrations, compatibility and upstream implementation or bug evidence.
 - Use [firecrawl-website-design-clone](../firecrawl-website-design-clone/SKILL.md) for an existing website's brand assets or its UI system. Return a compact asset reference for a document, or an agent-ready `DESIGN.md` for UI implementation.
-- Use [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md) for literature reviews and paper-backed synthesis, including biomedical, clinical, drug, gene, disease, epidemiology, and public-health topics. It queries Firecrawl's paper index — PubMed, bioRxiv, medRxiv, and arXiv abstracts with full text reachable per paper — rather than searching websites.
+- Use [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md) for literature reviews and paper-backed synthesis, including biomedical, clinical, drug, gene, disease, epidemiology, and public-health topics. It queries Firecrawl's paper index — PubMed, bioRxiv, medRxiv, and arXiv abstracts with full text reachable per paper — rather than searching websites. Drug labels, adverse event reports, recalls and trial registry records go to `firecrawl-health-research`.
 - Use [firecrawl-deep-research](../firecrawl-deep-research/SKILL.md) for sourced multi-source research reports built from **web** evidence: market, policy, technical, or industry topics. Not for literature reviews — when the evidence base is published papers, use `firecrawl-research-papers` above.
 - Use [firecrawl-seo-audit](../firecrawl-seo-audit/SKILL.md) for site structure, on-page SEO, keyword, and SERP audits.
 - Use [firecrawl-qa](../firecrawl-qa/SKILL.md) for live-site QA testing and bug reports.
@@ -37,10 +38,15 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 - Use [firecrawl-dashboard-reporting](../firecrawl-dashboard-reporting/SKILL.md) for dashboard metrics extraction.
 - Use [firecrawl-knowledge-base](../firecrawl-knowledge-base/SKILL.md) for LLM-ready docs, RAG chunks, training data, or docs mirrors.
 - Use [firecrawl-knowledge-ingest](../firecrawl-knowledge-ingest/SKILL.md) for auth-gated or JS-heavy docs portal ingestion.
-- Use [firecrawl-market-research](../firecrawl-market-research/SKILL.md) for market, financial, and industry research.
-- Use [firecrawl-legal-research](../firecrawl-legal-research/SKILL.md) for US court opinions, statutes and regulations, SEC filings by full-text search or by company, and patents, returned as a cited source list with a note that it is not legal advice. Financial analysis of filings stays in `firecrawl-market-research`.
+- Use [firecrawl-market-research](../firecrawl-market-research/SKILL.md) for market sizing, industry and trend research.
+- Use [firecrawl-financial-research](../firecrawl-financial-research/SKILL.md) for company financials, SEC XBRL facts and filings, company press releases and analyst ratings, BLS economic series, and crypto or prediction market prices, each with a link and a date.
+- Use [firecrawl-health-research](../firecrawl-health-research/SKILL.md) for FDA drug labels, adverse event reports, recalls and approvals, ClinicalTrials.gov trial status and the PubMed record behind a trial, returned as a dated source list. Literature reviews stay with `firecrawl-research-papers`.
+- Use [firecrawl-company-due-diligence](../firecrawl-company-due-diligence/SKILL.md) for company and counterparty checks: register entries, officers and owners, sanctions lists, court dockets, trademarks and regulations, with identifiers matched before any record is called a match.
+- Use [firecrawl-legal-research](../firecrawl-legal-research/SKILL.md) for US court opinions, statutes and regulations, SEC filings by full-text search or by company, and patents, returned as a cited source list with a note that it is not legal advice. Company financials and XBRL facts go to `firecrawl-financial-research`.
 - Use [firecrawl-demo-walkthrough](../firecrawl-demo-walkthrough/SKILL.md) for product flow walkthroughs and UX teardown reports.
-- Use [firecrawl-shop](../firecrawl-shop/SKILL.md) for product research and shopping recommendations.
+- Use [firecrawl-shop](../firecrawl-shop/SKILL.md) for product research and shopping recommendations, with retailer prices, currency, store, link and retrieval time, plus CPSC recall checks.
+- Use [firecrawl-travel-research](../firecrawl-travel-research/SKILL.md) for campsites and permits, vacation rentals and hotel options, returned as dated snapshots with currency, dates searched and retrieval time.
+- Use [firecrawl-real-estate-research](../firecrawl-real-estate-research/SKILL.md) for cited housing and property facts: US Census housing and demographic estimates, Auction.com auction listings, NYC property records and Swedish rentals, each with its source, geography and date.
 
 If no existing workflow fits, use this generic process and produce a reusable pattern that could become a new skill.
 
