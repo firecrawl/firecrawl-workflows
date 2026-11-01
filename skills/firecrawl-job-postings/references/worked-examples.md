@@ -66,6 +66,26 @@ Security Engineer, Application Security  Security  San Francisco  Hybrid  FullTi
 
 All five results had `is_remote: true`, but four had `workplace_type: Hybrid` and one `Remote`, so report both fields instead of calling a posting remote from the filter alone. One listed posting was published in 2023; show that date as given. The salary components carry `currency: USD` and `interval: 1 YEAR`. Firecrawl credits used: 5 for the board and 5 for the list.
 
+The list has no description, so the shortlisted second result goes to `jobs/job` (run at 21:28 UTC the same day):
+
+```bash
+firecrawl scrape ashbyhq-com/jobs/job --options '{"url":"https://jobs.ashbyhq.com/openai/4ef5bf23-cf0e-4b97-a639-11f963c99b88"}' --json
+```
+
+```text
+title                            Software Engineer, Financial Engineering
+date_posted                      2026-08-28
+application_deadline             null
+is_listed                        true
+workplace_type                   Hybrid
+job_location_type                TELECOMMUTE
+applicant_location_requirements  ["United States"]
+base_salary                      {"currency": "USD", "max_value": 445000, "min_value": 266000, "unit_text": "YEAR"}
+apply_url                        https://jobs.ashbyhq.com/openai/4ef5bf23-cf0e-4b97-a639-11f963c99b88/application
+```
+
+The record also carries `description_text` (5,601 characters here) for qualifications. One posting is labeled `Hybrid`, `TELECOMMUTE` and open to applicants in the United States, so quote all three rather than one. Firecrawl credits used: 5.
+
 ## Workday: one career site, then one posting
 
 Question: software engineer roles on Workday's own career site.
