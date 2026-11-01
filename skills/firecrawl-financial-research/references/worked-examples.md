@@ -4,7 +4,7 @@ Runs from November 1, 2026 (UTC) with the Firecrawl CLI 1.26.24. Output is trimm
 
 ## Company financials: Fiscal.ai checked against SEC XBRL facts
 
-Question: Apple's reported annual revenue and net income for recent fiscal years, checked against the SEC filing.
+Question: Apple's reported annual revenue and net income for recent fiscal years, with revenue checked against the SEC's XBRL facts.
 
 ```bash
 firecrawl search "company income statement and segment financials" --sources alexandria --json
@@ -24,11 +24,11 @@ FY2025  period ending 2025-09-27  earningsDate 2025-10-30  lastSourceFilingDate 
   Operating Profit      133050000000 USD
   Consolidated Net Income  112010000000 USD
   source: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm (page 32)
-FY2024  period ending 2024-09-28  earningsDate 2024-10-31
+FY2024  period ending 2024-09-28  earningsDate 2024-10-31  lastSourceFilingDate 2025-10-31
   Total Revenues        391035000000 USD
 ```
 
-The response labels these four totals `"unit": "M"`, but the values are whole US dollars, as the SEC figures below confirm. Each of them carries `asReportedValues` with the company's own line item ("Total Net Sales") and the source filing and page. Not every metric does: diluted EPS for FY2025 came back with no `asReportedValues`, so its source has to come from the filing. The same figure straight from the SEC:
+The response labels these four totals `"unit": "M"`, but the values are whole US dollars: the revenue matches the SEC value below to the dollar, and only revenue was checked against the SEC in this run. Every period came back with `isRestated: true`, and FY2024's `lastSourceFilingDate` is the later 10-K. Each of them carries `asReportedValues` with the company's own line item (such as "Total Net Sales" for revenue) and the source filing and page. Not every metric does: diluted EPS for FY2025 came back with no `asReportedValues`, so its source has to come from the filing. The same figure straight from the SEC:
 
 ```bash
 firecrawl find-tools --options '{"query":"SEC XBRL company facts revenue","limit":5}' --json
@@ -56,7 +56,7 @@ firecrawl scrape benzinga/calendar/removed --options '{"type":"ratings","pageSiz
 firecrawl scrape benzinga/news/press-releases --options '{"tickers":"AAPL","dateFrom":"2026-10-01","dateTo":"2026-11-01","pageSize":5,"displayOutput":"headline"}' --json
 ```
 
-The free `calendar/removed` call returned 5 records with no `error`, which confirms the key can reach Benzinga before spending Firecrawl credits. The Benzinga tools listed no earnings or economic calendar, so earnings dates come from `fiscal-ai` `events/calendar`. The press release call returned 5 releases, `"attribution": "Powered by Benzinga Data"`. The first three:
+The free `calendar/removed` call returned 5 records with no `error`, which confirms the key can reach Benzinga before spending Firecrawl credits. The Benzinga tools listed no earnings or economic calendar, so earnings dates come from `fiscal-ai` `events/calendar`. The press release call returned 5 releases, `"attribution": "Powered by Benzinga Data"`, with no total. With no `sort` set they came back oldest first (October 3 to October 13), so this is the first page of the month, not all of it. The first three:
 
 ```text
 PRNewswire     Sat, 03 Oct 2026 07:30:00 -0400  tickers IBKR, XYZ, AAPL
