@@ -47,7 +47,7 @@ On November 1, 2026 `vacation-rentals/locations` answered, but `vacation-rentals
 
 - `vacation-rentals/locations` turns a place name (`query`) into a `region_id`. Pick the row whose `type` and `name` match the user's place (a city, a neighborhood or an airport).
 - `vacation-rentals/search` takes `region_id`, `checkin`, `checkout` (at most 28 nights), `adults`, `children_ages`, `limit`, `offset` and `sort`, and returns `properties` with property ids, listing URLs, guest rating and displayed USD nightly and stay prices. Omitted dates default to a stay 30 days ahead, so always pass the user's dates. Resume with `next_offset` and the same criteria; results can shift between pages.
-- `vacation-rentals/offers` quotes one `property_id` for the same stay: the USD total, nightly price, base and tax components, payment model, instant-book flag and cancellation text. Dates the site reports as unavailable return `available: false` with a null offer. Offers does not reserve or book.
+- `vacation-rentals/offers` quotes one `property_id` for the same stay: the USD total, nightly price, base and tax components, payment model, instant-book flag and cancellation text. Dates the site reports as unavailable return `available: false` with a null offer. The `offers` capability does not reserve or book.
 - `vacation-rentals/details` reads a listing's description, bedrooms, amenities, house rules and map pin.
 
 ### Hotels: `trip-com`
