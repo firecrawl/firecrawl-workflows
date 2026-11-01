@@ -18,10 +18,13 @@ Retrieved 2026-11-01T20:21:01Z (`observed_at_ms` 1793564461290). `total: 5`, `ne
 272299    COTTONWOOD CAMPGROUND (CA)  available            {"available": 6}             59 sites  USD 35/night
           https://www.recreation.gov/camping/campgrounds/272299
 232471    COTTONWOOD GROUP            unavailable                                        3 sites  USD 55/night
+          https://www.recreation.gov/camping/campgrounds/232471
 272300    JUMBO ROCKS CAMPGROUND      partially available  {"partially available": 5}  119 sites  USD 30/night
           https://www.recreation.gov/camping/campgrounds/272300
 232470    SHEEP PASS GROUP            unavailable                                        6 sites  USD 55/night
+          https://www.recreation.gov/camping/campgrounds/232470
 10056207  Ryan Campground             unavailable                                       30 sites  USD 30/night
+          https://www.recreation.gov/camping/campgrounds/10056207
 ```
 
 The price is `price_range` (`amount_min` and `amount_max` with `currency: "USD"` and `per_unit: "night"`), the listed nightly fee, not a quote. Cottonwood's own description text says "There are 62 sites" while `campsites_count` is 59, so report the count the call returned and note the difference. Firecrawl credits used: 5 (discovery and the contract read cost 0).
@@ -103,7 +106,7 @@ Firecrawl credits used: 5. The search for the stay:
 firecrawl scrape vrbo-com/vacation-rentals/search --options '{"region_id":"6034866","checkin":"2026-12-11","checkout":"2026-12-14","adults":2,"limit":5}' --json
 ```
 
-From 20:21:09Z to 20:42:07Z, ten `search` attempts (one of them the contract's example request) and one `offers` attempt returned this error, spaced from a few seconds to about four minutes apart, at 0 Firecrawl credits each:
+From 20:21:09Z to 20:42:07Z, ten `search` attempts (one of them the contract's example request) and one `offers` attempt returned this error, spaced from 20 seconds to about four minutes apart, at 0 Firecrawl credits each, every one with `retryAfterSeconds: 2`:
 
 ```json
 {
@@ -118,7 +121,7 @@ From 20:21:09Z to 20:42:07Z, ten `search` attempts (one of them the contract's e
 }
 ```
 
-The same request retried at 21:30:32Z returned data, retrieved 2026-11-01T21:30:36Z (`observed_at_ms` 1793568636970): `total_results: 352`, `next_offset: 5`, for a stay of 3 nights. The first three of five properties:
+The same request retried at 21:30:32Z, about 48 minutes after the last failure, returned data, retrieved 2026-11-01T21:30:36Z (`observed_at_ms` 1793568636970): `total_results: 352`, `next_offset: 5`, for a stay of 3 nights. The first three of five properties:
 
 ```text
 45693503   Colby Loft | Downtown Asheville Loft Across Pritchard Park  Apartment · 2 bedrooms · 3 beds
@@ -148,13 +151,14 @@ total_price: 1271.3 USD
 cancellation: Free cancellation before Tue, Nov 10
 ```
 
-The quote total (USD 1,271.30) is higher than the search's "$1,125 for 3 nights" with "All fees included", so state the quote, show the search figure beside it, and keep both retrieval times. Firecrawl credits used: 5.
+The quote total (USD 1,271.30) is higher than the search's "$1,125 for 3 nights" with "All fees included", so state the quote, show the search figure beside it, and keep both retrieval times. The components (786 + 485.3) add up to the quote total but not to the nightly price times three nights (1,125), so report them as named without deriving a base rate per night. Firecrawl credits used: 5.
 
 ## Flights: `skyscanner-net` not reachable
 
 Question: daily fares for a route over a month.
 
 ```bash
+firecrawl list skyscanner-net --pretty
 firecrawl list skyscanner-net flights/price_calendar --include-costs --pretty
 firecrawl list skyscanner-net flights/monthly_prices --include-costs --pretty
 firecrawl find-tools --options '{"providers":["skyscanner-net"],"level":"tools","limit":20}' --json
@@ -165,6 +169,7 @@ firecrawl scrape skyscanner-net/flights/monthly_prices --options '{}' --json
 The capability names are the ones this workflow targets; no contract confirmed them, and the scrape options were a test, not options from a contract. Results:
 
 ```text
+list provider            invalid_option        Unknown or unavailable categories. ...
 list price_calendar       invalid_option        Unknown or unavailable categories. Browse the catalogue for accessible IDs; use query for natural-language search.
 list monthly_prices       invalid_option        Unknown or unavailable categories. ...
 find-tools (scoped)       invalid_option        Unknown or unavailable providers. ...
@@ -172,4 +177,4 @@ scrape price_calendar     unknown_capability    404  Unknown capability "flights
 scrape monthly_prices     unknown_capability    404  Unknown capability "flights/monthly_prices" on skyscanner-net.
 ```
 
-The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All five calls cost 0 Firecrawl credits. Record the codes as a gap, use the public-web fallback, and do not quote fares.
+The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All six calls cost 0 Firecrawl credits. Record the codes as a gap, use the public-web fallback, and do not quote fares.
