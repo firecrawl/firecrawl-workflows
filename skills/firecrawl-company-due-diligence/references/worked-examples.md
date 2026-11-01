@@ -17,10 +17,13 @@ Discovery returned `companies/officers` and `companies/persons_with_significant_
 ```text
 11299879  ARM HOLDINGS PLC            incorporated 9 April 2018
           110 Fulbourn Road, Cambridge, Cambridgeshire, United Kingdom, CB1 9NJ
+          https://find-and-update.company-information.service.gov.uk/company/11299879
 11278800  CHAFFINCH HOLDINGS LIMITED  incorporated 27 March 2018
           previous name: ARM HOLDINGS LIMITED
+          https://find-and-update.company-information.service.gov.uk/company/11278800
 02548782  SVF HOLDCO (UK) LIMITED     incorporated 16 October 1990
           previous names: ARM HOLDINGS PLC · ADVANCED RISC MACHINES HOLDINGS LIMITED
+          https://find-and-update.company-information.service.gov.uk/company/02548782
 ```
 
 A name alone would conflate these three companies. The rest of this run uses company number 11299879, the company currently registered as ARM HOLDINGS PLC.
@@ -41,14 +44,19 @@ Kronos I (Uk) Limited  registration number 13965760  notified 21 August 2023  ce
 Arm Limited            registration number 02557590  notified 9 April 2018    ceased 21 August 2023
   nature of control (both): Ownership of shares – 75% or more; Ownership of voting rights - 75% or
   more; Right to appoint or remove directors
+https://find-and-update.company-information.service.gov.uk/company/11299879/persons-with-significant-control
 ```
 
 The officers response reports `count_summary: "9 current officers"`: one secretary and eight directors. The first three directors:
 
 ```text
 DYKSTRA, Karen E.  Director  appointed 17 August 2023  born December 1958  American
+  https://find-and-update.company-information.service.gov.uk/officers/nW1zY8ZKD2JBJ5n4CcryCOe_PUs/appointments
 FISHER, Ronald D   Director  appointed 17 August 2023  born November 1947  American
+  https://find-and-update.company-information.service.gov.uk/officers/-LFeLZphNMJvFLqsVrG1pfdpbyQ/appointments
 HAAS, Rene Anthony Andrada  Director  appointed 25 July 2023  born July 1962  American
+  https://find-and-update.company-information.service.gov.uk/officers/XtaRzxuRrhMu93lgdygOlbMAUqc/appointments
+list: https://find-and-update.company-information.service.gov.uk/company/11299879/officers?page=1
 ```
 
 Each officer carries an `officer_id` and a link to their appointments page. Firecrawl credits used: 15 (5 per call; discovery and the contract read cost 0).
@@ -69,10 +77,16 @@ Discovery returned `opensanctions-org` `sanctions-screening/search_entities`, `s
 17022  SDN; Non-SDN  6 rows: OAO ROSNEFT OIL COMPANY, OIL COMPANY ROSNEFT, OJSC ROSNEFT OIL COMPANY,
                      OPEN JOINT-STOCK COMPANY ROSNEFT OIL COMPANY, ROSNEFT, ROSNEFT OIL COMPANY
                      26/1 Sofiyskaya Embankment  RUSSIA-EO14024, UKRAINE-EO13662
+                     https://sanctionssearch.ofac.treas.gov/Details.aspx?id=17022
 18301  Non-SDN       ROSNEFT FINANCE S.A.   46A Avenue John F Kennedy; 2nd Floor  UKRAINE-EO13662
+                     https://sanctionssearch.ofac.treas.gov/Details.aspx?id=18301
 18300  Non-SDN       ROSNEFT TRADE LIMITED  Elenion Building 5 Themistokli Dervi; 2nd floor  UKRAINE-EO13662
+                     https://sanctionssearch.ofac.treas.gov/Details.aspx?id=18300
 18299  SDN; Non-SDN  ROSNEFT TRADING S.A.   Rue Place du Lac 2, 1204  UKRAINE-EO13662, VENEZUELA-EO13850
+                     https://sanctionssearch.ofac.treas.gov/Details.aspx?id=18299
 ```
+
+Discovery also listed `sanctions/entity`, which returns the record as structured XML fields; `sanctions/record` returns the Details page as OFAC's search tool shows it, which is the page a reader can open from the link.
 
 ```bash
 firecrawl scrape sanctionssearch-ofac-treas-gov/sanctions/record --options '{"entity_id":"18301"}' --json
@@ -115,6 +129,7 @@ ARM HOLDINGS PLC /UK  CIK 0001973239  Nasdaq: ARM  state_of_incorporation X0
 business address: 110 FULBOURN ROAD, CAMBRIDGE, CB1 9NJ
 former name: Arm Holdings Ltd (2023-04-28 to 2023-09-01)
 category: Large accelerated filer  latest_filing_date: 2026-09-23
+https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001973239
 ```
 
 The record's address uses `X0` for the United Kingdom (`state_or_country_description`), and the business address matches the Companies House registered office of 11299879. The profile carries no UK company number (`lei` is null), so report CIK 0001973239 and company 11299879 as a possible association on name and address, not as a confirmed match. Firecrawl credits used: 5.
@@ -131,7 +146,9 @@ ARM  Word  Registered  application 75713155 (1999-05-24)  registration 2397339 (
      owner: ARM Limited (GB)  https://branddb.wipo.int/en/similarname/brand/US501999075713155
 ARM  Stylized characters  Registered  application 86391092 (2014-09-10)  registration 4980649 (2016-06-21)
      classes 41, 9, 38, 16, 37, 35, 45, 42  owner: ARM Limited (GB)
+     https://branddb.wipo.int/en/similarname/brand/US502014086391092
 ARM  Word  Registered  application 75713165 (1999-05-24)  registration 2397340 (2000-10-24)  class 9
+     https://branddb.wipo.int/en/similarname/brand/US501999075713165
 ```
 
 Two of the ten (applications 99313397 and 99313404, filed 2025-07-31) are `Pending`. The owner on these records is ARM Limited (GB). WIPO records carry no company number, and the Companies House PSC data shows Arm Limited (02557590) as a separate company from 11299879, so these marks are matched on owner name only. Report them as marks owned by Arm Limited, not as marks of the subject. Firecrawl credits used: 5.
@@ -154,7 +171,7 @@ https://www.courtlistener.com/docket/68447793/qualcomm-incorporated-v-arm-holdin
   Qualcomm Incorporated v. ARM Holdings PLC, 1:24-cv-00490
 ```
 
-The captions name Arm Ltd. and ARM Holdings PLC, and neither page has been tied to a registration number yet. Read each docket page for its court, filing date and parties before listing it, and name CourtListener (Free Law Project's RECAP archive) as the publisher. All five results were pages of these two dockets (two of 64938776, three of 68447793), and the search cost 2 Firecrawl credits.
+The captions name Arm Ltd. and ARM Holdings PLC, and neither page has been tied to a registration number yet. Read each docket page for its court, filing date and parties before listing it, and name CourtListener (Free Law Project's RECAP archive) as the publisher. All five results were pages of these two dockets (two of 64938776, three of 68447793). The results carry no filing date, so read it from each docket page. Firecrawl credits used: 2.
 
 ## Regulations: Firecrawl Government Index
 
@@ -178,4 +195,4 @@ https://fincen.gov/boi-faqs
 https://fincen.gov/beneficial-ownership-information-reporting-rule-fact-sheet
 ```
 
-The provider results add `jurisdiction: "us"`, `cites` and `updated_at` (August 25 to 30, 2026 for these pages). Take the effective date of a rule from the page itself. Firecrawl credits used: 0 for each call.
+The provider results add `jurisdiction: "us"`, `cites` on three of the five, and `updated_at` in epoch milliseconds (August 25 to 30, 2026 for these pages); the CLI results carry no date. Take the effective date of a rule from the page itself. Firecrawl credits used: 0 for each call.
