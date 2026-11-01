@@ -1,6 +1,6 @@
 # Worked Examples
 
-Runs from November 1, 2026 (UTC) with the Firecrawl CLI 1.26.24. Output is trimmed to the first results; counts and costs are as returned. Prices and listings change by the hour, so rerun before relying on them.
+Runs from November 1, 2026 (UTC) with the Firecrawl CLI 1.26.24. Output is trimmed to the first results; counts and costs are as returned. No provider in these runs required terms acceptance on the key used. Prices and listings change by the hour, so rerun before relying on them.
 
 ## US prices: Best Buy, Shopify stores and Target
 
@@ -103,7 +103,26 @@ The other two:
        https://www.cpsc.gov/Recalls/2023/Newair-Recalls-Magic-Chef-Air-Fryers-Due-to-Fire-and-Burn-Hazards
 ```
 
-The 24159 URL contains a space as returned. A brand in this list is not a recall of every product of that brand: the Shopify search above returned a COSORI TurboBlaze, and only the full notice (`product-recalls/recall` with `recall_number`) shows which models a recall names. Firecrawl credits used: 5.
+The 24159 URL contains a space as returned. A brand in this list is not a recall of every product of that brand: the Shopify search above returned a COSORI TurboBlaze, and only the full notice shows which models a recall names. Firecrawl credits used: 5.
+
+Reading the 24159 notice, with the space in its URL replaced by a hyphen:
+
+```bash
+firecrawl scrape "https://www.cpsc.gov/Recalls/2024/Best-Buy-Recalls-Insignia-Air-Fryers-and-Air-Fryer-Ovens-Due-to-Fire-Burn-and-Laceration-Hazards" --json
+```
+
+Condensed from the notice (`statusCode: 200`):
+
+```text
+Name of Product: Air Fryers and Air Fryer Ovens
+Remedy: Refund
+Recall Date: March 14, 2024
+Units: About 187,400 (In addition, about 99,900 were sold in Canada)
+Description: This recall involves Insignia Air Fryers and Insignia Air Fryer Ovens, model numbers
+  NS-AF34D2, NS-AF5DSS2, NS-AF5MSS2, NS-AF8DBD2, NS-AF10DBK2, and NS-AF10DSS2. ...
+```
+
+The model numbers come from the notice, not from the search result, so compare them with the model of each shortlisted product. Firecrawl credits used: 1.
 
 The same capability with no filter failed, as its contract says it would:
 
@@ -181,7 +200,3 @@ US $18.90-$21.90  MOQ 1,000 pieces  Handinhand (Zhejiang) Electronic Commerce Co
 ```
 
 `display_currency` was `null` on every record: the price is the supplier's display string for a minimum order, not a retail unit price. Firecrawl credits used: 5.
-
-## Totals
-
-All runs on November 1, 2026 used 39 Firecrawl credits: 35 for seven provider calls at 5 each, 4 for two web searches at 2 each, and 0 for discovery, contract reads and the failed recall search. No provider in this skill required terms acceptance on the key used.
