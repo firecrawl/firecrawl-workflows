@@ -115,11 +115,11 @@ firecrawl scrape vrbo-com/vacation-rentals/search --options '{"region_id":"60348
 }
 ```
 
-The same error came back on ten `search` attempts and one `offers` attempt (the contract's example `property_id` for the same stay) between 20:21:09Z and 20:42:07Z, spaced from a few seconds to about four minutes apart, including the contract's own example request. Each failed call cost 0 Firecrawl credits. A deliverable for this question reports no rental prices, records `provider_rate_limited` in Gaps And Limits and moves to the public-web fallback.
+The same error came back on ten `search` attempts between 20:21:09Z and 20:42:07Z, spaced from a few seconds to about four minutes apart (one of them the contract's example request, `{"region_id":"178234","limit":5}`), and on one `offers` attempt with the contract's example `property_id` (`96798806`) for the same stay. Each failed call cost 0 Firecrawl credits. A deliverable for this question reports no rental prices, records `provider_rate_limited` in Gaps And Limits and moves to the public-web fallback.
 
-## Flights: not reachable
+## Flights: `skyscanner-net` not reachable
 
-Question: daily fares for a route over a month.
+Question: daily fares for a route over a month. The capability names below are the ones this workflow targets; no contract confirmed them, and the scrape options were a test, not options from a contract.
 
 ```bash
 firecrawl list skyscanner-net flights/price_calendar --include-costs --pretty
@@ -128,7 +128,7 @@ firecrawl scrape skyscanner-net/flights/price_calendar --options '{"origin":"LHR
 firecrawl scrape skyscanner-net/flights/monthly_prices --options '{}' --json
 ```
 
-Both contract reads returned `invalid_option` with "Unknown or unavailable categories. Browse the catalogue for accessible IDs; use query for natural-language search." A Find Tools call scoped to `"providers":["skyscanner-net"]` returned the same code with "Unknown or unavailable providers", and both scrapes returned `unknown_capability` (404) with messages such as `Unknown capability "flights/price_calendar" on skyscanner-net.` The provider did not appear in the full provider listing for this key. All cost 0 Firecrawl credits. Record the codes as a gap and do not quote fares.
+Both contract reads returned `invalid_option` with "Unknown or unavailable categories. Browse the catalogue for accessible IDs; use query for natural-language search." A Find Tools call scoped to `"providers":["skyscanner-net"]` returned the same code with "Unknown or unavailable providers", and both scrapes returned `unknown_capability` (404) with messages such as `Unknown capability "flights/price_calendar" on skyscanner-net.` The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All cost 0 Firecrawl credits. Record the codes as a gap and do not quote fares. A discovery query for flights (`firecrawl find-tools --options '{"query":"skyscanner flights","limit":10}' --json`) ranked a different flight search tool first; check it with `firecrawl list` before using it, as in the Collection Plan.
 
 ## Cost summary
 
@@ -137,4 +137,4 @@ Both contract reads returned `invalid_option` with "Unknown or unavailable categ
 | Recreation.gov search and December nights | 2                        | 0                                          | 10                |
 | Trip.com directory and rooms              | 2                        | 0                                          | 10                |
 | Vrbo locations, search and offers         | 1                        | 11 (`provider_rate_limited`)               | 5                 |
-| Flight price tools                        | 0                        | 5 (`invalid_option`, `unknown_capability`) | 0                 |
+| `skyscanner-net` flight tools             | 0                        | 5 (`invalid_option`, `unknown_capability`) | 0                 |
