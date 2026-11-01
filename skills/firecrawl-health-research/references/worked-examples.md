@@ -123,7 +123,8 @@ NCT07200622  NOT_YET_RECRUITING  PHASE2         Imperial College London
   primary completion 2027-12-31 ESTIMATED  last update 2025-10-01
   https://clinicaltrials.gov/study/NCT07200622
 NCT07677865  WITHDRAWN                          West China Hospital
-  primary completion 2024-12-31 ACTUAL     last update 2026-10-16
+  start 2007-01-01 ACTUAL  primary completion 2024-12-31 ACTUAL  last update 2026-10-16
+  why_stopped: poor accrual and funding issues
   https://clinicaltrials.gov/study/NCT07677865
 ```
 
@@ -153,7 +154,6 @@ Five papers, the first:
 paperId 8812597353777838423  pmid:41865758  doi 10.1016/S0140-6736(26)00459-9
   Efficacy and safety of oral semaglutide 14 mg (flexible dose) in early-stage symptomatic
   Alzheimer's disease (evoke and evoke+): two phase 3, randomised, placebo-controlled trials.
-  https://pubmed.ncbi.nlm.nih.gov/41865758/
 ```
 
 The first `inspect` call passed `id` instead of `paperId` and returned `{"code":"missing_option","message":"inspect requires paperId.","status":400}` at 0 Firecrawl credits. With `paperId` it returned the authors, MeSH-style `categories`, `createdDate` 2026-05-30 and `updateDate` 2026-10-02. The contract does not define those two dates, so the publication date below comes from PubMed.
@@ -177,7 +177,7 @@ METHODS: "... These trials were registered at ClinicalTrials.gov (NCT04777396 an
 NCT04777409); both trials have been discontinued due to negative clinical outcome."
 ```
 
-Those two trials were not on the first page of the registry search. Their registry status:
+Those two trials were not on the first page of the registry search, and this paper does not report NCT05891496, so no paper was linked to that trial in this run. The PubMed record's `url` is the link to cite. Registry status of the two trials:
 
 ```bash
 firecrawl scrape clinicaltrials-gov/clinical-trials/study_dates --options '{"nct_ids":["NCT04777396","NCT04777409"]}' --json
