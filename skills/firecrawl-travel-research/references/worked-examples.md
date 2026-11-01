@@ -86,6 +86,7 @@ Question: rentals in Asheville, North Carolina for two adults, December 11 to 14
 
 ```bash
 firecrawl find-tools --options '{"query":"vacation rentals","limit":5}' --json
+firecrawl list vrbo-com vacation-rentals/search --include-costs --pretty
 firecrawl scrape vrbo-com/vacation-rentals/locations --options '{"query":"Asheville"}' --json
 ```
 
@@ -96,11 +97,13 @@ Retrieved 2026-11-01T20:21:01Z. Eight destinations; the first two:
 6214697  NEIGHBORHOOD  Downtown Asheville, Asheville, North Carolina, United States of America
 ```
 
-Firecrawl credits used: 5. The search for the stay failed:
+Firecrawl credits used: 5. The search for the stay:
 
 ```bash
 firecrawl scrape vrbo-com/vacation-rentals/search --options '{"region_id":"6034866","checkin":"2026-12-11","checkout":"2026-12-14","adults":2,"limit":5}' --json
 ```
+
+From 20:21:09Z to 20:42:07Z, ten `search` attempts (one of them the contract's example request) and one `offers` attempt returned this error, spaced from a few seconds to about four minutes apart, at 0 Firecrawl credits each:
 
 ```json
 {
@@ -115,26 +118,58 @@ firecrawl scrape vrbo-com/vacation-rentals/search --options '{"region_id":"60348
 }
 ```
 
-The same error came back on ten `search` attempts between 20:21:09Z and 20:42:07Z, spaced from a few seconds to about four minutes apart (one of them the contract's example request, `{"region_id":"178234","limit":5}`), and on one `offers` attempt with the contract's example `property_id` (`96798806`) for the same stay. Each failed call cost 0 Firecrawl credits. A deliverable for this question reports no rental prices, records `provider_rate_limited` in Gaps And Limits and moves to the public-web fallback.
+The same request retried at 21:30:32Z returned data, retrieved 2026-11-01T21:30:36Z (`observed_at_ms` 1793568636970): `total_results: 352`, `next_offset: 5`, for a stay of 3 nights. The first three of five properties:
+
+```text
+45693503   Colby Loft | Downtown Asheville Loft Across Pritchard Park  Apartment · 2 bedrooms · 3 beds
+           USD, $375 per night, "$1,125 for 3 nights", "All fees included"  9.6 Exceptional (180 reviews)
+           https://www.vrbo.com/1870445?chkin=2026-12-11&chkout=2026-12-14&adults=2&expediaPropertyId=45693503
+135521881  Sweet Biscuit Inn | 2 Homes • Sleeps 26                     House · 10 bedrooms · 14 beds
+           USD, $1,354 per night, "$4,063 for 3 nights", "All fees included"  rating "New"
+           https://www.vrbo.com/5462098?chkin=2026-12-11&chkout=2026-12-14&adults=2&expediaPropertyId=135521881
+19154028   Welcome to the Bamboo Bungalow!                             House · 2 bedrooms · 3 beds
+           USD, $287 per night, "$860 for 3 nights", "All fees included"  9.8 Exceptional (154 reviews)
+           https://www.vrbo.com/1094069?chkin=2026-12-11&chkout=2026-12-14&adults=2&expediaPropertyId=19154028
+```
+
+The search is sorted `RECOMMENDED` (the default), not by price. Firecrawl credits used: 5. A quote for the first property:
+
+```bash
+firecrawl scrape vrbo-com/vacation-rentals/offers --options '{"property_id":"45693503","checkin":"2026-12-11","checkout":"2026-12-14","adults":2}' --json
+```
+
+Retrieved 2026-11-01T21:30:49Z (`observed_at_ms` 1793568649003):
+
+```text
+available: true   instant_book: true   payment_model: PAY_LATER_WITH_DEPOSIT
+nightly_price: $375
+price_components: BaseRate 786 USD, GenericTax 485.3 USD
+total_price: 1271.3 USD
+cancellation: Free cancellation before Tue, Nov 10
+```
+
+The quote total (USD 1,271.30) is higher than the search's "$1,125 for 3 nights" with "All fees included", so state the quote, show the search figure beside it, and keep both retrieval times. Firecrawl credits used: 5.
 
 ## Flights: `skyscanner-net` not reachable
 
-Question: daily fares for a route over a month. The capability names below are the ones this workflow targets; no contract confirmed them, and the scrape options were a test, not options from a contract.
+Question: daily fares for a route over a month.
 
 ```bash
 firecrawl list skyscanner-net flights/price_calendar --include-costs --pretty
 firecrawl list skyscanner-net flights/monthly_prices --include-costs --pretty
+firecrawl find-tools --options '{"providers":["skyscanner-net"],"level":"tools","limit":20}' --json
 firecrawl scrape skyscanner-net/flights/price_calendar --options '{"origin":"LHR","destination":"JFK"}' --json
 firecrawl scrape skyscanner-net/flights/monthly_prices --options '{}' --json
 ```
 
-Both contract reads returned `invalid_option` with "Unknown or unavailable categories. Browse the catalogue for accessible IDs; use query for natural-language search." A Find Tools call scoped to `"providers":["skyscanner-net"]` returned the same code with "Unknown or unavailable providers", and both scrapes returned `unknown_capability` (404) with messages such as `Unknown capability "flights/price_calendar" on skyscanner-net.` The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All cost 0 Firecrawl credits. Record the codes as a gap and do not quote fares. A discovery query for flights (`firecrawl find-tools --options '{"query":"skyscanner flights","limit":10}' --json`) ranked a different flight search tool first; check it with `firecrawl list` before using it, as in the Collection Plan.
+The capability names are the ones this workflow targets; no contract confirmed them, and the scrape options were a test, not options from a contract. Results:
 
-## Cost summary
+```text
+list price_calendar       invalid_option        Unknown or unavailable categories. Browse the catalogue for accessible IDs; use query for natural-language search.
+list monthly_prices       invalid_option        Unknown or unavailable categories. ...
+find-tools (scoped)       invalid_option        Unknown or unavailable providers. ...
+scrape price_calendar     unknown_capability    404  Unknown capability "flights/price_calendar" on skyscanner-net.
+scrape monthly_prices     unknown_capability    404  Unknown capability "flights/monthly_prices" on skyscanner-net.
+```
 
-| Run                                       | Calls that returned data | Failed calls                               | Firecrawl credits |
-| ----------------------------------------- | ------------------------ | ------------------------------------------ | ----------------- |
-| Recreation.gov search and December nights | 2                        | 0                                          | 10                |
-| Trip.com directory and rooms              | 2                        | 0                                          | 10                |
-| Vrbo locations, search and offers         | 1                        | 11 (`provider_rate_limited`)               | 5                 |
-| `skyscanner-net` flight tools             | 0                        | 5 (`invalid_option`, `unknown_capability`) | 0                 |
+The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All five calls cost 0 Firecrawl credits. Record the codes as a gap, use the public-web fallback, and do not quote fares.
