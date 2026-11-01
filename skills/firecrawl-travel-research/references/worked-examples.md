@@ -166,7 +166,7 @@ firecrawl scrape skyscanner-net/flights/price_calendar --options '{"origin":"LHR
 firecrawl scrape skyscanner-net/flights/monthly_prices --options '{}' --json
 ```
 
-The capability names are the ones this workflow targets; no contract confirmed them, and the scrape options were a test, not options from a contract. Results:
+The four capability-level calls used guessed capability names and test options, kept here to show the errors; no contract confirmed them, so do not reuse them. Check the provider with the first command instead. Results:
 
 ```text
 list provider            invalid_option        Unknown or unavailable categories. ...
