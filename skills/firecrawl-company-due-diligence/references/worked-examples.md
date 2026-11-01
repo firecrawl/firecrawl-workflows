@@ -179,18 +179,3 @@ https://fincen.gov/beneficial-ownership-information-reporting-rule-fact-sheet
 ```
 
 The provider results add `jurisdiction: "us"`, `cites` and `updated_at` (August 25 to 30, 2026 for these pages). Take the effective date of a rule from the page itself. Firecrawl credits used: 0 for each call.
-
-## Cost Summary
-
-| Run                                      | Firecrawl credits |
-| ---------------------------------------- | ----------------- |
-| Companies House search, PSC and officers | 15                |
-| OFAC search and record                   | 10                |
-| OpenSanctions search and source page     | 6                 |
-| SEC filer profile                        | 5                 |
-| WIPO trademark search                    | 5                 |
-| CourtListener dockets (3 calls, all 502) | 0                 |
-| Web search fallback for dockets          | 2                 |
-| Government Index (CLI and provider)      | 0                 |
-| Discovery and contract reads             | 0                 |
-| Total                                    | 43                |
