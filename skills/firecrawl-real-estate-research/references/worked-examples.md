@@ -154,11 +154,17 @@ firecrawl scrape qasa/real-estate/rental_search --options '{"city":"Göteborg","
 
 The Göteborg search area returned listings in surrounding localities (Surte, Hovås, Sävedalen), so give each listing's locality. In all five, `monthlyCost` equals `rent` plus `tenantBaseFee`.
 
-The response's `next_request` holds the next page's options with null fields. Passing it back unchanged fails at 0 Firecrawl credits, so send the same options with only `page` changed (`{"city":"Göteborg","limit":5,"page":2}`):
+The response's `next_request` holds the next page's options, with null fields. Passing it back unchanged failed at 0 Firecrawl credits:
+
+```bash
+firecrawl scrape qasa/real-estate/rental_search --options '{"city":"Göteborg","firsthand":null,"furnished":null,"limit":5,"max_monthly_cost":null,"min_rooms":null,"page":2,"pets_allowed":null,"student_home":null}' --json
+```
 
 ```text
 "error": {"code": "invalid_option", "message": "real-estate/rental_search: firsthand must be boolean.", "status": 400}
 ```
+
+The same options with only `page` changed (`{"city":"Göteborg","limit":5,"page":2}`) returned page 2 in a separate check.
 
 Firecrawl credits used: 5 for the search and 0 for the failed page request.
 
