@@ -92,7 +92,7 @@ If appropriate, use sub-agents or equivalent parallel task runners, one per sour
 
 ## League And Player Data
 
-[Standings, Statcast numbers, Sleeper league settings, rosters and matchups: value as returned, season, week or date range, the source's date, link, or provider/capability when the response has no link]
+[Standings, Statcast numbers, Sleeper league settings, rosters and matchups: value as returned, season, week or date range, the source's date, provider/capability, link (when the response has none, a link you opened and checked, labeled as not returned by the call)]
 
 ## Markets And Tickets
 
@@ -120,7 +120,7 @@ This is a source list for research, not betting or investment advice.
 
 ## Quality Bar
 
-- Report only values a call returned in this session, each with a direct link and the date or time the source gives, plus the search date. When a response carries no link (Sleeper, for example), cite the provider and capability and say the response had no link. Never write a score, record, injury status, roster, price or odds figure from memory.
+- Report only values a call returned in this session, each with a direct link and the date or time the source gives, plus the search date. When a response carries no link (Sleeper, for example), open the matching public page or endpoint, check that it shows the same values, and give it labeled as not returned by the call; if no such link can be checked, cite the provider and capability and record the missing link in Gaps And Limits. Never write a score, record, injury status, roster, price or odds figure from memory.
 - Scores, injury designations and prices change during the day. Keep three times apart: the source's own date (`report_date`, `official_date`), the source's update time (`updatedAt`, `updated_at_ms`) and the observation time (`observed_at_ms`, or the time of the call). Give each one the response has, write "not given" for a missing update time, and convert epoch milliseconds to UTC.
 - The NFL.com injury report is the league's official designation. ESPN and StartWho are secondary lists. When sources disagree, show each with its date and do not reconcile them.
 - Report prediction market prices, odds and ticket prices exactly as returned, with the provider's update time when it gives one and the observation time. Do not turn a price into a pick, recommend a bet, a side, a ticket purchase or a lineup, or describe a price as a sure outcome.
