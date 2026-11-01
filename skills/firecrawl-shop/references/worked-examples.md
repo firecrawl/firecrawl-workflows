@@ -63,8 +63,11 @@ firecrawl search "air fryer site:target.com/p" --limit 5 --json
 firecrawl scrape target-com/products/product --options '{"url":"https://www.target.com/p/ninja-air-fryer-pro-4-in-1-af141/-/A-90569368"}' --json
 ```
 
+The search returned 5 Target product URLs. The product read returned 1 record, `observed_at_ms: 1793564490892` (2026-11-01 20:21 UTC):
+
 ```text
 id 90569368  brand Ninja  price null  availability null
+url: https://www.target.com/p/ninja-air-fryer-pro-4-in-1-af141/-/A-90569368
 title: Ninja Pro 4-in-1 Air Fryer Gray: 5-Quart, 1750W, Dishwasher-Safe Parts, Metal &#38; Plastic
 specifications: Capacity (Volume): 5 Quart | Model #: AF141 | Wattage Output: 1750 Watts | ...
 return_policy: This item must be returned within 90 days of the date it was purchased ...
