@@ -28,7 +28,7 @@ firecrawl scrape bestbuy-com/products/search --options '{"query":"air fryer"}' -
 
 Firecrawl credits used: 5 (discovery and the contract read cost 0).
 
-A generic query found none of these stores. `firecrawl search "compare air fryer prices at US retailers" --sources alexandria --json` returned `doordash-com` (three capabilities), `amazon-com` `products/prices` and `littlecaesars-com` `restaurants/get_deals`, at 0 Firecrawl credits. Name the store in the query, or read the contract of a provider from the table directly.
+A generic query found none of these stores. `firecrawl search "compare air fryer prices at US retailers" --sources alexandria --json` returned `doordash-com` (three capabilities), `amazon-com` `products/prices` and `littlecaesars-com` `restaurants/get_deals`, at 0 Firecrawl credits. Name the store in the query, or read the contract of a provider the skill lists directly.
 
 The Shopify catalog searches across Shopify stores:
 
