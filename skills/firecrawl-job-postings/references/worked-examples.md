@@ -96,7 +96,7 @@ firecrawl search "myworkdayjobs.com software engineer job" --limit 5 --sources w
 firecrawl scrape myworkdayjobs-com/jobs/search_jobs --options '{"career_site":"https://workday.wd5.myworkdayjobs.com/Workday","query":"software engineer","limit":5}' --json
 ```
 
-`find-tools` ranked `myworkdayjobs-com` `jobs/get_job` and `jobs/search_jobs` first. The web search (2 Firecrawl credits) returned the career site `https://workday.wd5.myworkdayjobs.com/Workday` but no posting URLs, so `search_jobs` supplied them: `total: 167`, 5 returned, `next_offset: 5`. Search results carry only relative dates:
+`find-tools` ranked `myworkdayjobs-com` `jobs/get_job` and `jobs/search_jobs` first. The web search (2 Firecrawl credits) returned the career site `https://workday.wd5.myworkdayjobs.com/Workday` but no posting URLs, so `search_jobs` supplied them: `total: 167`, 5 returned, `next_offset: 5`. Search results carry only relative dates. Three of the five:
 
 ```text
 Senior Software Engineer  USA, CA, Pleasanton  Flex  Posted 25 Days Ago
@@ -146,7 +146,7 @@ Discovery returned `ziprecruiter-com` `jobs/salary`. Every execution failed insi
 }
 ```
 
-Seven calls between 20:03 and 20:07 UTC, across `jobs/salary`, `jobs/search_jobs` and `jobs/job` (the last with the contract's example URL), all returned this error. Record it in Gaps And Limits. The fallback reads the public salary page directly:
+Seven calls between 20:03 and 20:07 UTC, across `jobs/salary`, `jobs/search_jobs` and `jobs/job` (the last with the contract's example URL), all returned this error. Record it in Gaps And Limits. The postings half of the question has no result from this provider; list it as a shortfall and run the open web search from the skill for Austin data analyst postings on employer pages. The salary fallback reads the public salary page directly:
 
 ```bash
 firecrawl scrape "https://www.ziprecruiter.com/Salaries/Data-Analyst-Salary-in-Austin,TX" --max-age 0 --json
@@ -155,6 +155,7 @@ firecrawl scrape "https://www.ziprecruiter.com/Salaries/Data-Analyst-Salary-in-A
 The page title was "Salary: Data Analyst in Austin, Texas (November, 2026)". Condensed from the page text:
 
 ```text
+$62.2K is the 25th percentile. Wages below this are outliers.
 The median wage is $76K / yr.
 $94.5K is the 75th percentile. Wages above this are outliers.
 As of Nov 1, 2026, the average annual pay for aData Analyst in Austin is $81,914 a year.
@@ -162,4 +163,4 @@ As of Nov 1, 2026, the average annual pay for aData Analyst in Austin is $81,914
 $96,100 (75th percentile) with top earners (90th percentile) making $119,440 annually in Austin.
 ```
 
-The page states two different 75th percentiles ($94.5K in the chart and $96,100 in the text), so quote the sentence you use with its source and date. This is an occupation benchmark, not the pay of any posting. Firecrawl credits used: 1 for the scrape; the failed provider calls cost 0.
+The page states its 25th and 75th percentiles twice with different figures ($62.2K and $62,000; $94.5K and $96,100), so quote the sentence you use with its source and date. This is an occupation benchmark, not the pay of any posting. Firecrawl credits used: 1 for the scrape; the failed provider calls cost 0.
