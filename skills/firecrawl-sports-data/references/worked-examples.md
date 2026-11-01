@@ -1,6 +1,6 @@
 # Worked Examples
 
-Runs from November 1, 2026 (20:01 to 20:02 UTC) with the Firecrawl CLI 1.26.24. Output is trimmed to the first results; counts and costs are as returned. Scores, injury designations and prices change during the day, so rerun before relying on them.
+Runs from November 1, 2026 (20:00 to 20:02 UTC) with the Firecrawl CLI 1.26.24. Output is trimmed to the first results; counts and costs are as returned. Scores, injury designations and prices change during the day, so rerun before relying on them.
 
 ## Scores and schedules: ESPN and Baseball Savant
 
@@ -51,7 +51,7 @@ firecrawl scrape nfl-com/sports-league-data/injury_report --options '{"team":"KC
 firecrawl scrape startwho-com/fantasy-sports-rankings/injury_report --options '{"team":"KC"}' --json
 ```
 
-The search returned two tools, `nfl-com/sports-league-data/injury_report` and `startwho-com/fantasy-sports-rankings/injury_report`, at 0 Firecrawl credits. Sleeper's `nfl_state` returned `"week": 8, "season": "2026", "season_type": "regular"`, observed at 2026-11-01T20:01:21Z. The response carries no source link, so cite the provider and capability.
+The search returned two tools, `nfl-com/sports-league-data/injury_report` and `startwho-com/fantasy-sports-rankings/injury_report`, at 0 Firecrawl credits. Sleeper's `nfl_state` returned `"week": 8, "season": "2026", "season_type": "regular"`, observed at 2026-11-01T20:01:21Z. The response carries no source link, so cite the provider and capability; the upstream endpoint https://api.sleeper.app/v1/state/nfl, which the call did not return, showed the same week and season when checked on the run date.
 
 The NFL.com report for week 8 returned `count: 12`, `report_date: 2026-10-30` and `source_url: https://www.nfl.com/injuries/league/2026/reg8`. The players with a game designation, as returned:
 
@@ -137,7 +137,7 @@ SeatGeek returned `total: 11`, 5 on this page, `next_page: 2`. The first three, 
   https://seatgeek.com/atlanta-falcons-tickets/11-15-2026-atlanta-georgia-mercedes-benz-stadium/nfl/18016671
 ```
 
-StubHub returned `total_count: 4805` and 20 events on page 1, in relevance order rather than by date (November 1, then November 15, then November 8). Nine of the 20 are tailgate or add-on events, such as "Premium Tailgate Party: Denver Broncos vs. Kansas City Chiefs", so filter by name. The first three:
+StubHub returned `total_count: 4805` and 20 events on page 1, in relevance order rather than by date (November 1, then November 15, then November 8). Nine of the 20 are tailgate or add-on events, such as "Premium Tailgate Party: Denver Broncos vs. Kansas City Chiefs", so filter by name. Three events had `starts_at_ms: null` and `date_confirmed: false`, including Las Vegas Raiders at Kansas City Chiefs (`formatted_date: Jan 10 2027`), so they cannot be filtered by time. The first three:
 
 ```text
 Nov 01 2:25 PM   Kansas City Chiefs at Denver Broncos   https://www.stubhub.com/denver-broncos-denver-tickets-11-1-2026/event/160425045/
