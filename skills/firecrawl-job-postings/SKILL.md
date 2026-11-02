@@ -19,6 +19,8 @@ references:
 
 Use this to find and verify current job openings and return a shortlist where every posting has a direct link, the date the source gives and pay only as the source states it. Employer applicant-tracking boards (Greenhouse, Ashby, Workday) are read through Firecrawl Alexandria providers; public web search and posting pages are the fallback.
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the role, location or remote eligibility, employers, seniority and pay constraints from context, and start when the role or the employer is clear. Ask for missing role or location information only when it prevents a useful search. Respect explicit source choices, sufficient supplied evidence and no-browse requests.
