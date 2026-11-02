@@ -19,6 +19,8 @@ references:
 
 Use this to collect scores, schedules, standings, rosters, injury reports, league data, ticket listings and prediction market prices, each with a link and the time the source gives. The deliverable is a dated record of what the sources showed when they were read. It does not pick a side, a bet or a lineup. For a fantasy decision, collect the data here and decide with [firecrawl-fantasy-sports](../firecrawl-fantasy-sports/SKILL.md).
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the sport, league, teams or players, the date or week and the data the user wants from context. Start when the sport or league and the data are clear, using today or the current league week unless the user names another period. Ask at most 1-3 short questions only if blocked, such as the league when the request fits several, or the Sleeper league ID (Firecrawl has no access to a user's league without it). Report times in UTC, and also in the user's timezone when they give one.
