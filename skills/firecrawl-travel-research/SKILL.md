@@ -19,6 +19,8 @@ references:
 
 Use this to research campsites, permits, vacation rentals, hotels and flights for a trip, and return what each source showed at the moment it was read, with a link, the dates searched and the retrieval time. The deliverable is a dated list of options a reader can check.
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the destination, the departure city for flights, travel dates or month, party size, trip components (campsites, permits, rentals, hotels, flights) and price ceiling from context. Start when the destination is clear, with travel dates when checking availability or prices and the departure city when searching flights. Ask at most 1-3 short questions only if blocked, such as the dates, the departure city for flights, the number of adults and children's ages, or the park or campground.
