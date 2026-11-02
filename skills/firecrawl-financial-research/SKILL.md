@@ -19,6 +19,8 @@ references:
 
 Use this to collect company financials, filings, news, economic series and market prices, each with a link and a date. The deliverable is a sourced data sheet a reader can check, not an opinion on a company, a security or a market. For market sizing, industry overviews and trend research from the web, use [firecrawl-market-research](../firecrawl-market-research/SKILL.md). For EDGAR full-text search across filers (filings that mention a phrase or event), court opinions and patents, use [firecrawl-legal-research](../firecrawl-legal-research/SKILL.md).
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the companies (name, ticker or CIK), the data needed (statements, segments, filings, news, ratings, economic series, prices), the periods and the output format from context, and start when the subject (company, series, asset or market) and the data are clear. Ask at most 1-3 short questions only if blocked, such as which listing a ticker refers to, annual or quarterly periods, or the date range for news.
