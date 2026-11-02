@@ -21,6 +21,8 @@ Use this to find FDA records on drugs and medical devices, clinical trial regist
 
 For a literature review or a synthesis of published studies, use [firecrawl-research-papers](../firecrawl-research-papers/SKILL.md). This workflow uses PubMed and the Firecrawl Research Index only to look up the records behind a drug, device or trial question, such as the paper that reports a registered trial.
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the drug, device or condition, the record type (label, adverse events, recall, approval, trial, publication), the date range and any sponsor or company from context, and start when the subject and record type are clear. Ask at most 1-3 short questions only if blocked, such as which product (brand or generic name), which record type, or the date range.
