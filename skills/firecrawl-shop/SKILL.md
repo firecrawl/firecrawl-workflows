@@ -19,6 +19,8 @@ references:
 
 Use this to research products and recommend a purchase option. Only add items to a cart when the user explicitly asks and has an authenticated browser profile available. Every price in the deliverable carries its currency, store or seller, link and retrieval time, and every recall carries its cpsc.gov notice and date.
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the product, budget, preferences, sites, country and currency, and desired stopping point from context, and start when the product is clear. Ask at most 1-3 short questions only if blocked, such as the product, a hard budget or preference, or the country to buy in.
