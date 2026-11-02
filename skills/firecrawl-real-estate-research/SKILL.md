@@ -19,6 +19,8 @@ references:
 
 Use this to collect housing and property facts for a place or an address: Census estimates, auction listings, New York City property records and Swedish rental listings, each with a link, the geography it covers and a date. The deliverable is a source list a reader can check. It does not value a property, compare investments or say what to buy, rent or bid.
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the place or address, the source types, the figures wanted and the date or vintage from context, and start when the place and the kind of data are clear. Ask at most 1-3 short questions only if blocked, such as which county or city is meant when a name matches several, the NYC borough of an address, or whether the user wants active or sold (closed) auctions.
