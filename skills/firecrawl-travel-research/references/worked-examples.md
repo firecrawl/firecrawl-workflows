@@ -153,7 +153,7 @@ cancellation: Free cancellation before Tue, Nov 10
 
 The quote total (USD 1,271.30) is higher than the search's "$1,125 for 3 nights" with "All fees included", so state the quote, show the search figure beside it, and keep both retrieval times. The components (786 + 485.3) add up to the quote total but not to the nightly price times three nights (1,125), so report them as named without deriving a base rate per night. Firecrawl credits used: 5.
 
-## Flights: Google Flights
+## Flights: Google Flights one way
 
 Question: one-way economy fares from San Francisco to Chicago O'Hare for one adult on December 10, 2026.
 
@@ -163,7 +163,7 @@ firecrawl list flights-google-com flights/search_flights --include-costs --prett
 firecrawl scrape flights-google-com/flights/search_flights --options '{"origin":"SFO","destination":"ORD","departure_date":"2026-12-10","adults":1,"limit":5}' --json
 ```
 
-Retrieved 2026-11-02T10:55:47Z (`observed_at_ms` 1793616947168). `stage: one_way`, `price_scope: one_way_total`, `available_results: 21`, `returned: 5`, `skipped_results: 0`, no `notices`. The five rows in the order returned, times local:
+Retrieved 2026-11-02T10:55:47Z (`observed_at_ms` 1793616947168). `stage: one_way`, `price_scope: one_way_total`, `available_results: 21`, `returned: 5`, `truncated: true`, `skipped_results: 0`, no `notices`. The five rows in the order returned, times local:
 
 ```text
 USD 149  nonstop  AA 3137                    SFO 13:54 -> ORD 20:20           266 min  carry-on 1, checked 0
@@ -174,7 +174,9 @@ USD 129  1 stop   F9 2930 + F9 1342 via DFW  SFO 10:11 -> ORD 19:48           45
 search_url: https://www.google.com/travel/flights?tfs=CBwQAhoeEgoyMDI2LTEyLTEwagcIARIDU0ZPcgcIARIDT1JEQAFIAXABmAEC&hl=en&gl=US&curr=USD
 ```
 
-The rows follow Google's ranking (`group: top` for the three nonstops, `other` for the two Frontier rows), not price, and the lowest fare arrives at 05:01 the next day. No bags were requested and `price_with_requested_bags` is null on every row; `bags_included` differs between fares of the same amount. Firecrawl credits used: 5 (the contract reads cost 0).
+The rows follow Google's ranking (`group: top` for the three nonstops, `other` for the two Frontier rows), not price, and the lowest fare arrives at 05:01 the next day. No bags were requested and `price_with_requested_bags` is null on every row; `bags_included` differs between fares of the same amount. `limit: 5` keeps the example short; for the cheapest fare on a date, use `limit: 50` at the same cost. Firecrawl credits used: 5 (the contract reads cost 0).
+
+## Flights: Google Flights round trip
 
 Question: a round trip from New York JFK to London Heathrow for two adults in economy, January 20 to 27, 2027.
 
@@ -182,7 +184,7 @@ Question: a round trip from New York JFK to London Heathrow for two adults in ec
 firecrawl scrape flights-google-com/flights/search_flights --options '{"origin":"JFK","destination":"LHR","departure_date":"2027-01-20","return_date":"2027-01-27","adults":2,"limit":5}' --json
 ```
 
-Retrieved 2026-11-02T10:55:54Z (`observed_at_ms` 1793616954321). `stage: outbound`, `price_scope: round_trip_from`, `available_results: 19`, `returned: 5`:
+Retrieved 2026-11-02T10:55:54Z (`observed_at_ms` 1793616954321). `stage: outbound`, `price_scope: round_trip_from`, `available_results: 19`, `returned: 5`, `truncated: true`, `skipped_results: 0`, no `notices`:
 
 ```text
 USD 1506  nonstop  VS 10   JFK 21:10 -> LHR 09:25 (Jan 21)  435 min
@@ -190,6 +192,7 @@ USD 1506  nonstop  B6 7    JFK 21:10 -> LHR 09:30 (Jan 21)  440 min
 USD 1506  nonstop  DL 3    JFK 22:30 -> LHR 10:30 (Jan 21)  420 min
 USD 1506  nonstop  BA 182  JFK 23:20 -> LHR 11:10 (Jan 21)  410 min
 USD 1506  nonstop  AA 104  JFK 23:50 -> LHR 12:05 (Jan 21)  435 min
+search_url: https://www.google.com/travel/flights?tfs=CBwQAhoeEgoyMDI3LTAxLTIwagcIARIDSkZLcgcIARIDTEhSGh4SCjIwMjctMDEtMjdqBwgBEgNMSFJyBwgBEgNKRktAAUABSAFwAZgBAQ&hl=en&gl=US&curr=USD
 ```
 
 Return flights for BA 182, with its `selection` copied into `selected_outbound` and the other options unchanged:
@@ -198,17 +201,18 @@ Return flights for BA 182, with its `selection` copied into `selected_outbound` 
 firecrawl scrape flights-google-com/flights/search_flights --options '{"origin":"JFK","destination":"LHR","departure_date":"2027-01-20","return_date":"2027-01-27","adults":2,"limit":5,"selected_outbound":[{"airline":"BA","departure_date":"2027-01-20","destination":"LHR","flight_number":"182","origin":"JFK"}]}' --json
 ```
 
-Retrieved 2026-11-02T10:56:11Z (`observed_at_ms` 1793616971594). `stage: return`, `price_scope: round_trip_total`, `available_results: 19`, `returned: 5`:
+Retrieved 2026-11-02T10:56:11Z (`observed_at_ms` 1793616971594). `stage: return`, `price_scope: round_trip_total`, `available_results: 19`, `returned: 5`, `truncated: true`, `skipped_results: 0`, no `notices`:
 
 ```text
-USD 1506  nonstop  B6 20             LHR 12:20 -> JFK 15:52  512 min
-USD 1693  nonstop  AA 141            LHR 17:00 -> JFK 20:05  485 min
-USD 1693  nonstop  BA 183            LHR 19:20 -> JFK 22:25  485 min
-USD 1506  nonstop  B6 2220           LHR 07:25 -> JFK 10:50  505 min
-USD 1610  1 stop   IB 716 + IB 325   LHR 11:25 -> JFK 19:15  770 min  via MAD
+USD 1506  nonstop  B6 20                      LHR 12:20 -> JFK 15:52  512 min  carry-on null, checked null
+USD 1693  nonstop  AA 141                     LHR 17:00 -> JFK 20:05  485 min  carry-on 2, checked null
+USD 1693  nonstop  BA 183                     LHR 19:20 -> JFK 22:25  485 min  carry-on 2, checked null
+USD 1506  nonstop  B6 2220                    LHR 07:25 -> JFK 10:50  505 min  carry-on null, checked null
+USD 1610  1 stop   IB 716 + IB 325 via MAD    LHR 11:25 -> JFK 19:15  770 min  carry-on 2, checked null
+search_url: https://www.google.com/travel/flights?tfs=CBwQAho_EgoyMDI3LTAxLTIwIh8KA0pGSxIKMjAyNy0wMS0yMBoDTEhSKgJCQTIDMTgyagcIARIDSkZLcgcIARIDTEhSGh4SCjIwMjctMDEtMjdqBwgBEgNMSFJyBwgBEgNKRktAAUABSAFwAZgBAQ&hl=en&gl=US&curr=USD
 ```
 
-The outbound USD 1,506 matched the cheapest returns in this list; returning on BA 183 made the pair USD 1,693. The query had `adults: 2` and the response gives no per-person price, so report the amount with the party size. Bag allowances came back null on the outbound rows, as the contract describes for international fares. Firecrawl credits used: 10 (5 per search).
+The outbound USD 1,506 matched the cheapest returns in this list; returning on BA 183 made the pair USD 1,693. The query had `adults: 2` and the response gives no per-person price, so report the amount with the party size. `bags_included` was null for both `carry_on` and `checked` on all five outbound rows; on the return rows `checked` stayed null and three rows showed `carry_on: 2`. No bags were requested and `price_with_requested_bags` was null throughout. Firecrawl credits used: 10 (5 per search).
 
 ## Flights: `skyscanner-net` not reachable
 
@@ -234,4 +238,4 @@ scrape price_calendar     unknown_capability    404  Unknown capability "flights
 scrape monthly_prices     unknown_capability    404  Unknown capability "flights/monthly_prices" on skyscanner-net.
 ```
 
-The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All six calls cost 0 Firecrawl credits. Record the codes as a gap and use `flights-google-com` (above) or the public-web fallback; never quote a fare from memory.
+The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All six calls cost 0 Firecrawl credits. Record the codes as a gap. `flights-google-com` (above) prices one departure date per call, so a month of daily fares stays a gap; run the dates the user names or use the public-web fallback, and never quote a fare from memory.
