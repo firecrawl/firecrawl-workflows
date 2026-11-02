@@ -19,6 +19,8 @@ references:
 
 Use this to find US court opinions, statutes and regulations, plus SEC filings and patents, and return them with links and dates. The deliverable is a source list a reader can check, not an answer to the legal question.
 
+**Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
+
 ## Workflow
 
 1. **Set the scope.** Infer the question, source type, jurisdiction or court, date range and companies or patent fields from context, and start when the question and source type are clear. Ask at most 1-3 short questions only if blocked, such as the jurisdiction, the court, the filing form or the date range.
