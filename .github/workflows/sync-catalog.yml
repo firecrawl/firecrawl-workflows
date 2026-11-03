@@ -42,6 +42,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          for dir in ../source/verticals/*/; do
+            [ -d "$dir" ] || continue
+            name=$(basename "$dir")
+            if [ -e "../source/skills/$name" ]; then
+              echo "::error::$name is in both skills/ and verticals/"
+              exit 1
+            fi
+          done
+
           rm -rf skills/workflows
           mkdir -p skills/workflows
           cp -R ../source/skills/. skills/workflows/
