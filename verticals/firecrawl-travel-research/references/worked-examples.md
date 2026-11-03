@@ -238,4 +238,4 @@ scrape price_calendar     unknown_capability    404  Unknown capability "flights
 scrape monthly_prices     unknown_capability    404  Unknown capability "flights/monthly_prices" on skyscanner-net.
 ```
 
-The provider did not appear in the full provider listing for this key (`firecrawl list --providers`, every page). All six calls cost 0 Firecrawl credits. Record the codes as a gap. `flights-google-com` (above) prices one departure date per call, so a month of daily fares stays a gap; run the dates the user names or use the public-web fallback, and never quote a fare from memory.
+The provider did not appear in the full provider listing for this key (`firecrawl list --providers --limit 100`, following each page through all 458 providers; rechecked on November 3, 2026). All six calls cost 0 Firecrawl credits. Record the codes as a gap. `flights-google-com` (above) prices one departure date per call, so a month of daily fares stays a gap; run the dates the user names or use the public-web fallback, and never quote a fare from memory.
