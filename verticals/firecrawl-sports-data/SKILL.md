@@ -17,7 +17,7 @@ references:
 
 # Firecrawl Sports Data
 
-Use this to collect scores, schedules, standings, rosters, injury reports, league data, ticket listings and prediction market prices, each with a link and the time the source gives. The deliverable is a dated record of what the sources showed when they were read. It does not pick a side, a bet or a lineup. For a fantasy decision, collect the data here and decide with [firecrawl-fantasy-sports](../firecrawl-fantasy-sports/SKILL.md).
+Use this to collect scores, schedules, standings, rosters, injury reports, league data, ticket listings and prediction market prices, each with a link and the time the source gives. The deliverable is a dated record of what the sources showed when they were read. It does not pick a side, a bet or a lineup. For a fantasy decision, collect the data here and decide with `firecrawl-fantasy-sports`.
 
 **Setup.** Alexandria provider calls need a signed-in Firecrawl account; the keyless tier does not cover them. If `firecrawl` is not installed or `firecrawl --status` shows no login, ask the user before installing anything, since it changes their machine, then run `npx -y firecrawl-cli@latest init --all --browser`. It installs the CLI and, when no login is saved, opens a browser sign-in with Google or GitHub; a free account includes 1,000 credits a month. Then continue the task.
 
@@ -31,7 +31,7 @@ Use this to collect scores, schedules, standings, rosters, injury reports, leagu
 
 Use the Firecrawl CLI or equivalent Firecrawl tools. Check `firecrawl <command> --help` for supported options.
 
-Sports data comes from Firecrawl Alexandria providers, which need a `FIRECRAWL_API_KEY`. Keyless use gets no providers: a provider call without a key fails with `Error: Alexandria requires a Firecrawl API key with access enabled.` (CLI exit 1), so without a key go straight to the public-web fallback below.
+Sports data comes from Firecrawl Alexandria providers, which need a `FIRECRAWL_API_KEY`. Keyless use gets no providers: a provider call without a signed-in Firecrawl account fails with an error that asks you to sign in (CLI exit 1), so without a key go straight to the public-web fallback below.
 
 1. **Find the tool.** `firecrawl search "<what you need>" --sources alexandria --json` returns matching tools, and `firecrawl find-tools --options '{"query":"<what you need>","limit":5}' --json` does the same. Discovery costs 0 Firecrawl credits. Ranking can change between identical calls, and discovery can return `TOOL_DISCOVERY_UNAVAILABLE`; retry after a few seconds or use the other command. When discovery does not surface a tool below, read its contract directly in step 2.
 2. **Read the contract.** `firecrawl list <provider> <capability> --include-costs --pretty` shows the options, the response fields and the price in Firecrawl credits. Pass only options the contract lists, with the types it states (ESPN `date` is a `YYYYMMDD` string and Baseball Savant `date` is `YYYY-MM-DD`, both US Eastern game days; Polymarket `limit_per_type` is a required number). `firecrawl list <provider> --include-costs` lists every capability of one provider. Contract reads cost 0 Firecrawl credits.
