@@ -48,6 +48,8 @@ Use this when the user wants a finished deliverable powered by Firecrawl, not on
 - Use [firecrawl-travel-research](../firecrawl-travel-research/SKILL.md) for campsites and permits, vacation rental prices and hotel profiles, returned as dated snapshots with currency, dates searched and retrieval time. Hotel rates and flight prices are recorded as gaps.
 - Use [firecrawl-real-estate-research](../firecrawl-real-estate-research/SKILL.md) for cited housing and property facts: US Census housing and demographic estimates, Auction.com auction listings, NYC property records and Swedish rentals, each with its source, geography and date.
 
+Seven of these are opt-in vertical skills that `firecrawl init` does not install: `firecrawl-legal-research`, `firecrawl-financial-research`, `firecrawl-health-research`, `firecrawl-company-due-diligence`, `firecrawl-sports-data`, `firecrawl-travel-research` and `firecrawl-real-estate-research`. If the one the task needs isn't installed, tell the user and offer `npx skills add firecrawl/skills --skill <name>` (or `firecrawl setup <name>` with a recent Firecrawl CLI). Until it's installed, use the generic process below.
+
 If no existing workflow fits, use this generic process and produce a reusable pattern that could become a new skill.
 
 For a focused workflow, follow its deliverable and stopping conditions. A contact card, documentation answer or fantasy recommendation does not require a research report. Reuse adequate evidence and preserve explicit source and no-browse instructions.

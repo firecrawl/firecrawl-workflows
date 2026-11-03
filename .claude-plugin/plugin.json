@@ -30,12 +30,6 @@
     "./skills/firecrawl-shop",
     "./skills/firecrawl-business-contacts",
     "./skills/firecrawl-job-postings",
-    "./skills/firecrawl-fantasy-sports",
-    "./skills/firecrawl-financial-research",
-    "./skills/firecrawl-health-research",
-    "./skills/firecrawl-company-due-diligence",
-    "./skills/firecrawl-sports-data",
-    "./skills/firecrawl-travel-research",
-    "./skills/firecrawl-real-estate-research"
+    "./skills/firecrawl-fantasy-sports"
   ]
 }

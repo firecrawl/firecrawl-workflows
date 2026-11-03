@@ -10,15 +10,35 @@ Preferred — the full catalog (includes these workflows):
 npx skills add firecrawl/skills
 ```
 
-Installing directly from this repo also works and serves the same 26 workflow skills:
+Installing directly from this repo also works and serves the same 19 workflow skills:
 
 ```bash
 npx skills add firecrawl/firecrawl-workflows
 ```
 
-Existing workflows cover professional discovery in `firecrawl-lead-gen`; enrichment of supplied people and companies and meeting briefs in `firecrawl-lead-research`; published organizational contacts in `firecrawl-business-contacts`; and brand assets or UI systems in `firecrawl-website-design-clone`. Current job openings and fantasy decisions have their own workflow skills, and `firecrawl-legal-research` returns cited US court opinions, statutes, SEC filings and patents. Six more workflows return dated, linked source lists from Firecrawl Alexandria providers: company financials, XBRL facts and market prices in `firecrawl-financial-research`; FDA records and clinical trials in `firecrawl-health-research`; registers, sanctions lists, dockets and trademarks in `firecrawl-company-due-diligence`; scores, injury reports and ticket listings in `firecrawl-sports-data`; campsites, permits, rentals and hotel profiles in `firecrawl-travel-research`; and housing figures and property records in `firecrawl-real-estate-research`. `firecrawl-job-postings` also reads employer job boards, and `firecrawl-shop` compares retailer prices and checks recalls. Official documentation lookup belongs to the core `firecrawl-developer-index` skill.
+Existing workflows cover professional discovery in `firecrawl-lead-gen`; enrichment of supplied people and companies and meeting briefs in `firecrawl-lead-research`; published organizational contacts in `firecrawl-business-contacts`; and brand assets or UI systems in `firecrawl-website-design-clone`. Current job openings and fantasy decisions have their own workflow skills. `firecrawl-job-postings` also reads employer job boards, and `firecrawl-shop` compares retailer prices and checks recalls. Official documentation lookup belongs to the core `firecrawl-developer-index` skill.
 
 With the Firecrawl CLI installed, use `firecrawl setup workflows` to install the workflow set. The workflows use supported CLI commands, inspect discovered provider contracts before execution and preserve source evidence in their results. Alexandria provider access requires an authenticated Firecrawl account; workflows describe public-source fallbacks where applicable.
+
+## Vertical skills (opt-in)
+
+Seven skills cover one domain each and return dated, linked source lists from Firecrawl Alexandria providers. They live in [`verticals/`](./verticals), and `firecrawl init` and `firecrawl setup workflows` don't install them:
+
+- `firecrawl-legal-research`: US court opinions, statutes, SEC filings and patents
+- `firecrawl-financial-research`: company financials, XBRL facts and market prices
+- `firecrawl-health-research`: FDA records and clinical trials
+- `firecrawl-company-due-diligence`: registers, sanctions lists, dockets and trademarks
+- `firecrawl-sports-data`: scores, injury reports and ticket listings
+- `firecrawl-travel-research`: campsites, permits, rentals and hotel profiles
+- `firecrawl-real-estate-research`: housing figures and property records
+
+Install the ones you need by name:
+
+```bash
+npx skills add firecrawl/skills --skill firecrawl-legal-research firecrawl-travel-research
+```
+
+With a recent Firecrawl CLI, `firecrawl setup legal-research` installs one skill and `firecrawl setup verticals` installs all seven. The `firecrawl-workflows` router names each vertical skill and offers the install command when the one a task needs is missing.
 
 ## Contributing
 
