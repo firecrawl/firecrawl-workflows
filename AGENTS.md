@@ -4,7 +4,7 @@
 
 ## Vertical skills (opt-in)
 
-Vertical skills for a specific domain (legal, financial, health, travel and similar) live in `verticals/<skill-name>/`, not `skills/`. CI mirrors `verticals/` into the catalog under `skills/verticals/`. `firecrawl init` and `firecrawl setup workflows` install only the `skills/workflows/` family, so vertical skills are never installed by default. Users opt in with `firecrawl setup verticals`, `firecrawl setup <name>` or `npx skills add firecrawl/skills --skill <name>`. New vertical skills go in `verticals/` and need no CLI release. Don't list them in the plugin manifests, which install as one bundle.
+Vertical skills for a specific domain (legal, financial, health, travel and similar) live in `verticals/<skill-name>/`, not `skills/`. CI mirrors `verticals/` into the catalog under `skills/verticals/`. `firecrawl init` and `firecrawl setup workflows` install only the `skills/workflows/` family, so they don't install vertical skills. Users opt in with `firecrawl setup verticals`, `firecrawl setup <name>` or `npx skills add firecrawl/skills --skill <name> -g -y`. New vertical skills go in `verticals/` and need no CLI release. Don't list them in the plugin manifests, which install as one bundle.
 
 ## Routing rule
 

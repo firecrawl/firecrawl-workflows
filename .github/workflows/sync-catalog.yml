@@ -45,8 +45,8 @@ jobs:
           for dir in ../source/verticals/*/; do
             [ -d "$dir" ] || continue
             name=$(basename "$dir")
-            if [ -e "../source/skills/$name" ]; then
-              echo "::error::$name is in both skills/ and verticals/"
+            if [ -e "../source/skills/$name" ] || [ -e "skills/core/$name" ] || [ -e "skills/build/$name" ]; then
+              echo "::error::$name in verticals/ is already a skill name in skills/ or the catalog"
               exit 1
             fi
           done
@@ -71,7 +71,7 @@ jobs:
           # Vertical skills (mirror)
 
           Mirror of [`firecrawl/firecrawl-workflows`](https://github.com/firecrawl/firecrawl-workflows) `verticals/`. Do not edit here.
-          These skills are opt-in: `firecrawl init` does not install them. Install one with `npx skills add firecrawl/skills --skill <name>`.
+          These skills are opt-in: `firecrawl init` does not install them. Install one with `npx skills add firecrawl/skills --skill <name> -g -y`; agents ask the user first and install only if they agree.
           EOF
           fi
 
