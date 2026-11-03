@@ -1,14 +1,15 @@
 name: Sync workflow skills to catalog
 
-# Mirrors skills/ into firecrawl/skills under skills/workflows/.
-# The catalog is a read-only distribution repo; this repo is the source of
-# truth for workflow skills.
+# Mirrors skills/ into firecrawl/skills under skills/workflows/, and the
+# opt-in verticals/ into skills/verticals/. The catalog is a read-only
+# distribution repo; this repo is the source of truth for workflow skills.
 
 on:
   push:
     branches: [main]
     paths:
       - "skills/**"
+      - "verticals/**"
       - ".github/workflows/sync-catalog.yml"
   workflow_dispatch:
 
@@ -35,7 +36,7 @@ jobs:
           ssh-key: ${{ secrets.CATALOG_DEPLOY_KEY }}
           path: catalog
 
-      - name: Sync skills/workflows
+      - name: Sync skills/workflows and skills/verticals
         run: |
           cd catalog
           git config user.name "github-actions[bot]"
@@ -51,6 +52,19 @@ jobs:
           Mirror of [`firecrawl/firecrawl-workflows`](https://github.com/firecrawl/firecrawl-workflows) — do not edit here.
           PR changes against `firecrawl/firecrawl-workflows`; CI overwrites this directory on every sync.
           EOF
+
+          rm -rf skills/verticals
+          if [ -d ../source/verticals ]; then
+            mkdir -p skills/verticals
+            cp -R ../source/verticals/. skills/verticals/
+
+            cat > skills/verticals/README.md <<'EOF'
+          # Vertical skills (mirror)
+
+          Mirror of [`firecrawl/firecrawl-workflows`](https://github.com/firecrawl/firecrawl-workflows) `verticals/`. Do not edit here.
+          These skills are opt-in: `firecrawl init` does not install them. Install one with `npx skills add firecrawl/skills --skill <name>`.
+          EOF
+          fi
 
           git add -A
           if git diff --cached --quiet; then
