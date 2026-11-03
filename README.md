@@ -29,7 +29,7 @@ Seven skills cover one domain each and return dated, linked source lists from Fi
 - `firecrawl-health-research`: FDA records and clinical trials
 - `firecrawl-company-due-diligence`: registers, sanctions lists, dockets and trademarks
 - `firecrawl-sports-data`: scores, injury reports and ticket listings
-- `firecrawl-travel-research`: campsites, permits, rentals and hotel profiles
+- `firecrawl-travel-research`: campsites, permits, rentals, hotel profiles and flight fares
 - `firecrawl-real-estate-research`: housing figures and property records
 
 Install the ones you need by name:
