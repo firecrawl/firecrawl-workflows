@@ -213,29 +213,3 @@ search_url: https://www.google.com/travel/flights?tfs=CBwQAho_EgoyMDI3LTAxLTIwIh
 ```
 
 The outbound USD 1,506 matched the cheapest returns in this list; returning on BA 183 made the pair USD 1,693. The query had `adults: 2` and the response gives no per-person price, so report the amount with the party size. `bags_included` was null for both `carry_on` and `checked` on all five outbound rows; on the return rows `checked` stayed null and three rows showed `carry_on: 2`. No bags were requested and `price_with_requested_bags` was null throughout. Firecrawl credits used: 10 (5 per search).
-
-## Flights: `skyscanner-net` not reachable
-
-Question: daily fares for a route over a month.
-
-```bash
-firecrawl list skyscanner-net --pretty
-firecrawl list skyscanner-net flights/price_calendar --include-costs --pretty
-firecrawl list skyscanner-net flights/monthly_prices --include-costs --pretty
-firecrawl find-tools --options '{"providers":["skyscanner-net"],"level":"tools","limit":20}' --json
-firecrawl scrape skyscanner-net/flights/price_calendar --options '{"origin":"LHR","destination":"JFK"}' --json
-firecrawl scrape skyscanner-net/flights/monthly_prices --options '{}' --json
-```
-
-The four capability-level calls used guessed capability names and test options, kept here to show the errors; no contract confirmed them, so do not reuse them. Check the provider with the first command instead. Results:
-
-```text
-list provider            invalid_option        Unknown or unavailable categories. ...
-list price_calendar       invalid_option        Unknown or unavailable categories. Browse the catalogue for accessible IDs; use query for natural-language search.
-list monthly_prices       invalid_option        Unknown or unavailable categories. ...
-find-tools (scoped)       invalid_option        Unknown or unavailable providers. ...
-scrape price_calendar     unknown_capability    404  Unknown capability "flights/price_calendar" on skyscanner-net.
-scrape monthly_prices     unknown_capability    404  Unknown capability "flights/monthly_prices" on skyscanner-net.
-```
-
-The provider did not appear in the full provider listing for this key (`firecrawl list --providers --limit 100`, following each page through all 458 providers; rechecked on November 3, 2026). All six calls cost 0 Firecrawl credits. Record the codes as a gap. `flights-google-com` (above) prices one departure date per call, so a month of daily fares stays a gap; run the dates the user names or use the public-web fallback, and never quote a fare from memory.
